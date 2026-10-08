@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            listBox1 = new ListBox();
-            Checkout = new Button();
+            itemsAdded = new ListBox();
             pictureBox1 = new PictureBox();
             label1 = new Label();
             butterfinger = new Button();
@@ -44,12 +43,18 @@
             label6 = new Label();
             label7 = new Label();
             pictureBox4 = new PictureBox();
-            button1 = new Button();
             Tonys = new Button();
             pictureBox5 = new PictureBox();
             label8 = new Label();
             label9 = new Label();
-            button2 = new Button();
+            Coke = new Button();
+            orderSummary = new ListBox();
+            speakVendy = new Button();
+            removeItem = new Button();
+            confirmItems = new Button();
+            checkoutSave = new Button();
+            label10 = new Label();
+            cancelAll = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -57,25 +62,15 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             SuspendLayout();
             // 
-            // listBox1
+            // itemsAdded
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 25;
-            listBox1.Location = new Point(872, 138);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(226, 329);
-            listBox1.TabIndex = 0;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
-            // 
-            // Checkout
-            // 
-            Checkout.Location = new Point(927, 507);
-            Checkout.Name = "Checkout";
-            Checkout.Size = new Size(112, 34);
-            Checkout.TabIndex = 1;
-            Checkout.Text = "Pay Now";
-            Checkout.UseVisualStyleBackColor = true;
-            Checkout.Click += Checkout_Click;
+            itemsAdded.FormattingEnabled = true;
+            itemsAdded.ItemHeight = 25;
+            itemsAdded.Location = new Point(837, 346);
+            itemsAdded.Name = "itemsAdded";
+            itemsAdded.Size = new Size(340, 279);
+            itemsAdded.TabIndex = 0;
+            itemsAdded.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // pictureBox1
             // 
@@ -200,23 +195,12 @@
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(808, 562);
+            pictureBox4.Location = new Point(954, 24);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(363, 334);
+            pictureBox4.Size = new Size(233, 227);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 14;
             pictureBox4.TabStop = false;
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Nineteen Ninety Seven", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.Black;
-            button1.Location = new Point(872, 902);
-            button1.Name = "button1";
-            button1.Size = new Size(254, 44);
-            button1.TabIndex = 15;
-            button1.Text = "Speak with Vendy...";
-            button1.UseVisualStyleBackColor = true;
             // 
             // Tonys
             // 
@@ -227,6 +211,7 @@
             Tonys.TabIndex = 16;
             Tonys.Text = "CHOOSE ME!";
             Tonys.UseVisualStyleBackColor = true;
+            Tonys.Click += Tonys_Click;
             // 
             // pictureBox5
             // 
@@ -257,26 +242,102 @@
             label9.TabIndex = 19;
             label9.Text = "£1.20";
             // 
-            // button2
+            // Coke
             // 
-            button2.Location = new Point(57, 545);
-            button2.Name = "button2";
-            button2.Size = new Size(112, 34);
-            button2.TabIndex = 20;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            Coke.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Coke.Location = new Point(44, 545);
+            Coke.Name = "Coke";
+            Coke.Size = new Size(142, 34);
+            Coke.TabIndex = 20;
+            Coke.Text = "CHOOSE ME!";
+            Coke.UseVisualStyleBackColor = true;
+            Coke.Click += Coke_Click;
+            // 
+            // orderSummary
+            // 
+            orderSummary.FormattingEnabled = true;
+            orderSummary.ItemHeight = 25;
+            orderSummary.Location = new Point(837, 741);
+            orderSummary.Name = "orderSummary";
+            orderSummary.Size = new Size(340, 254);
+            orderSummary.TabIndex = 21;
+            orderSummary.SelectedIndexChanged += orderSummary_SelectedIndexChanged;
+            // 
+            // speakVendy
+            // 
+            speakVendy.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            speakVendy.Location = new Point(954, 257);
+            speakVendy.Name = "speakVendy";
+            speakVendy.Size = new Size(233, 71);
+            speakVendy.TabIndex = 22;
+            speakVendy.Text = "Speak With Vendy...";
+            speakVendy.UseVisualStyleBackColor = true;
+            speakVendy.Click += speakVendy_Click;
+            // 
+            // removeItem
+            // 
+            removeItem.Location = new Point(837, 647);
+            removeItem.Name = "removeItem";
+            removeItem.Size = new Size(115, 60);
+            removeItem.TabIndex = 23;
+            removeItem.Text = "Remove Item";
+            removeItem.UseVisualStyleBackColor = true;
+            // 
+            // confirmItems
+            // 
+            confirmItems.Location = new Point(1040, 650);
+            confirmItems.Name = "confirmItems";
+            confirmItems.Size = new Size(128, 57);
+            confirmItems.TabIndex = 24;
+            confirmItems.Text = "Finish!";
+            confirmItems.UseVisualStyleBackColor = true;
+            confirmItems.Click += confirmItems_Click;
+            // 
+            // checkoutSave
+            // 
+            checkoutSave.Location = new Point(844, 1042);
+            checkoutSave.Name = "checkoutSave";
+            checkoutSave.Size = new Size(330, 76);
+            checkoutSave.TabIndex = 25;
+            checkoutSave.Text = "Checkout";
+            checkoutSave.UseVisualStyleBackColor = true;
+            checkoutSave.Click += checkoutSave_Click;
+            // 
+            // label10
+            // 
+            label10.Location = new Point(686, 346);
+            label10.Name = "label10";
+            label10.Size = new Size(128, 143);
+            label10.TabIndex = 26;
+            label10.Text = "Total";
+            // 
+            // cancelAll
+            // 
+            cancelAll.Location = new Point(1040, 1189);
+            cancelAll.Name = "cancelAll";
+            cancelAll.Size = new Size(112, 34);
+            cancelAll.TabIndex = 27;
+            cancelAll.Text = "Cancel";
+            cancelAll.UseVisualStyleBackColor = true;
+            cancelAll.Click += cancelAll_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1212, 1529);
-            Controls.Add(button2);
+            ClientSize = new Size(1212, 1571);
+            Controls.Add(cancelAll);
+            Controls.Add(label10);
+            Controls.Add(checkoutSave);
+            Controls.Add(confirmItems);
+            Controls.Add(removeItem);
+            Controls.Add(speakVendy);
+            Controls.Add(orderSummary);
+            Controls.Add(Coke);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(pictureBox5);
             Controls.Add(Tonys);
-            Controls.Add(button1);
             Controls.Add(pictureBox4);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -290,8 +351,7 @@
             Controls.Add(butterfinger);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
-            Controls.Add(Checkout);
-            Controls.Add(listBox1);
+            Controls.Add(itemsAdded);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -305,8 +365,7 @@
 
         #endregion
 
-        private ListBox listBox1;
-        private Button Checkout;
+        private ListBox itemsAdded;
         private PictureBox pictureBox1;
         private Label label1;
         private Button butterfinger;
@@ -320,11 +379,17 @@
         private Label label6;
         private Label label7;
         private PictureBox pictureBox4;
-        private Button button1;
         private Button Tonys;
         private PictureBox pictureBox5;
         private Label label8;
         private Label label9;
-        private Button button2;
+        private Button Coke;
+        private ListBox orderSummary;
+        private Button speakVendy;
+        private Button removeItem;
+        private Button confirmItems;
+        private Button checkoutSave;
+        private Label label10;
+        private Button cancelAll;
     }
 }
