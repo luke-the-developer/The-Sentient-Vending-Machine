@@ -1,17 +1,25 @@
 //planning notes
 
-//1. Create lots of click buttons for each product and include price  [COMPLETE]
-//3. build ability to remove items from the list box or cancel all items from the list box
-//4. add functionality to add each item to list box once selected and display it in list box [COMPLETE]
-//5. order summary shows the list of products and saves to a text file
-//6. Set the checkout button to freeze everything but payment zone
-//7. Add a function to group same items together display quantity and then show in order summary also totaling the price with each item added (function calculateOrderSummary)
+//1.[COMPLETE] Create lots of click buttons for each product and include price  [COMPLETE]
+//2. Add a remove button to get rid of items from list box and then update total price in order summary 
+//3. build ability to cancel all items and order. place this in a cancel button in checkout area
+//4. [COMPLETE] add functionality to add each item to list box once selected and display it in list box [COMPLETE]
+//5. A paid receipt or summary shows the list of products and saves to a text file after items are paid for
+//6. Set the checkout button to freeze everything but payment zone. Use groups/read only to stop adding more items
+//7. [COMPLETE]Add a function to group same items together display quantity and then show in order summary also totaling the price with each item added [COMPLETE]
 //8. Work out calculations for total price amount of items then display in total checkout area under amount due. Coins entered lowers amount. (functions moneyPaid) 
-//9. Add a drag drop function to allow money to be inserted into the vending machine [COMPLETE]
+//9.[COMPLETE] Add a drag drop function to allow money to be inserted into the vending machine [COMPLETE]
+//10.Work out how to disable coins and drag drop in checkout area but then activate coins and slot once checkout button is clicked.
+//11. Add a total label and running total of all products so far
+//12. Add a label or messagebox which displays change from payment made and then resets the machine to start again.
+//13. Add drag drop function from list box to drag items from first list box into rubbish bin
+//14. Add a class, dictionary and list for the extra Vendy feature. Make a game or feature where user can win a prize or get a random product. Incorporate radio buttons and other controls I have not used so far
+//15. Add a useful label displaying most recent action of the user
+// this could be for answering questions or making choices. Could add a hacking feature of the vending machine, such as a number code guess for assembly and opcode manipulation
 
 //EXTRA. extra create a chat option - sentience feature (if user just wants a chat). also can build in logic to choose products
-        //this could be a rand operator - nested inf statements on a loop. a random product selector implying the machine is sentient
-        //could have a built in game function - sentient vending machine asks if you wanna play a game - can win prizes
+//this could be a rand operator - nested inf statements on a loop. a random product selector implying the machine is sentient
+//could have a built in game function - sentient vending machine asks if you wanna play a game - can win prizes
 
 using System.Collections.Specialized;
 using System.Numerics;
@@ -69,12 +77,72 @@ namespace Vending_Machine
         private void calculateOrderSummary()
         {
 
-        }
+            // calculate the total price of the items in the listbox1 and display in order summary listbox
 
+            int butterfingerChosen = 0;
+            int marsChosen = 0;
+            int tonysChosen = 0;
+            int cokeChosen = 0;
+
+            foreach (string product in listBox1.Items)
+            {
+                if (product.Contains("Butterfinger, "))
+                {
+                    butterfingerChosen++;
+                }
+                else if (product.Contains("Mars"))
+                {
+                    marsChosen++;
+                }
+
+                else if (product.Contains("Tony's"))
+                {
+                    tonysChosen++;
+                }
+                else if (product.Contains("Coke, £1.20"))
+                {
+                    cokeChosen++;
+                }
+
+            }
+
+            // this calculates the total price of the items selected
+
+            double marsTotal = marsChosen * marsPrice;
+            double butterfingerTotal = butterfingerChosen * butterfingerPrice;
+            double tonysTotal = tonysChosen * tonysPrice;
+            double cokeTotal = cokeChosen * cokePrice;
+
+           double totalPrice = marsTotal + butterfingerTotal + tonysTotal + cokeTotal;
+
+
+            // this displays the full order in the order summary list box with amount and price
+
+            orderSummary.Items.Clear(); // this clears the order summary list box beofre new items are added
+
+            if (butterfingerChosen > 0)
+            {
+                orderSummary.Items.Add("Butterfinger x " + butterfingerChosen + " - " + butterfingerTotal.ToString("£0.00")); //price at 0.00 waiting for calculation of total price for each item
+            }
+
+            if (marsChosen > 0)
+            {
+                orderSummary.Items.Add("Mars x " + marsChosen + " - " + marsTotal.ToString("£0.00"));
+            }
+
+            if (tonysChosen > 0)
+            {
+                orderSummary.Items.Add("Tony's x " + tonysChosen + " - " + tonysTotal.ToString("£0.00"));
+            }
+            if (cokeChosen > 0)
+            {
+                orderSummary.Items.Add("Coke x " + cokeChosen + " - " + cokeTotal.ToString("£0.00"));
+            }
+
+        }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
 
         }
 
@@ -104,22 +172,13 @@ namespace Vending_Machine
             totalPrice += marsPrice;
 
             // group more than one of the same item together and then display this in the list box
-
-            int marsChosen = 0;
-
         }
 
         private void Tonys_Click(object sender, EventArgs e)
         {
-
-
             listBox1.Items.Add("Tony's " + tonysPrice.ToString("£0.00"));
             MessageBox.Show("Tony's added to your order");//confirms  user selected Tony's chocolonely
             totalPrice += tonysPrice;
-
-
-          
-
         }
 
         private void Coke_Click(object sender, EventArgs e)
@@ -130,20 +189,9 @@ namespace Vending_Machine
 
         }
 
-        private void speakVendy_Click(object sender, EventArgs e)
-        {
-            //conversation with vendy with choices which culminates in a game and a prize if user wins
-            //use rand() for: game, a prize of a random product select
-
-
-        }
-
         private void orderSummary_SelectedIndexChanged(object sender, EventArgs e)
         {
             //This prints stored items in a list as a summary. Add up the total price of items in the list and displays after finish is clicked
-
-
-
         }
 
         private void checkoutSave_Click(object sender, EventArgs e)
@@ -164,7 +212,7 @@ namespace Vending_Machine
         private void confirmItems_Click(object sender, EventArgs e)
         {
 
-
+            calculateOrderSummary(); //calling this to calculate order summary and display in that list box
 
         }
 
