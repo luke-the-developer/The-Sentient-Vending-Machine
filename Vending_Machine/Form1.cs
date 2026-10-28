@@ -5,12 +5,12 @@
 //3. build ability to cancel all items and order. place this in a cancel button in checkout area
 //4. [COMPLETE] add functionality to add each item to list box once selected and display it in list box [COMPLETE]
 //5. A paid receipt or summary shows the list of products and saves to a text file after items are paid for
-//6. Set the checkout button to freeze everything but payment zone. Use groups/read only to stop adding more items
+//6. [COMPLETE] Set the checkout button to freeze everything but payment zone. Use groups/read only to stop adding more items [COMPLETE]
 //7. [COMPLETE]Add a function to group same items together display quantity and then show in order summary also totaling the price with each item added [COMPLETE]
 //8. Work out calculations for total price amount of items then display in total checkout area under amount due. Coins entered lowers amount. (functions moneyPaid) 
 //9.[COMPLETE] Add a drag drop function to allow money to be inserted into the vending machine [COMPLETE]
 //10.Work out how to disable coins and drag drop in checkout area but then activate coins and slot once checkout button is clicked.
-//11. Add a total label and running total of all products so far
+//11. [COMPLETE] Add a total label and running total of all products so far [COMPLETE]
 //12. Add a label or messagebox which displays change from payment made and then resets the machine to start again.
 //13. Add drag drop function from list box to drag items from first list box into rubbish bin
 //14. Add a class, dictionary and list for the extra Vendy feature. Make a game or feature where user can win a prize or get a random product. Incorporate radio buttons and other controls I have not used so far
@@ -25,13 +25,15 @@ using System.Collections.Specialized;
 using System.Numerics;
 using System.Security.Policy;
 
+
 namespace Vending_Machine
 {
     public partial class Form1 : Form
     {
-        // add more classes such as basket for items selected and a checkout class holding payment methods
-        // private Checkout checkout = new Checkout(); // this allows access to the checkout class and variables contained to this form1
 
+        Checkout checkout = new Checkout(); // I will use this to call separate functions built in the checkout class to calculate the amount due, money paid and change
+
+        // coins for vending machine set as const so value can not be changed
         const double onePoundCoin = 1.00;
         const double twoPoundCoin = 2.00;
         const double tenPCoin = 0.10;
@@ -52,20 +54,18 @@ namespace Vending_Machine
             InitializeComponent();
 
             paymentBox.AllowDrop = true;
-
+            paymentZone.Enabled = false;
         }
 
         //price of the products
-
         const double butterfingerPrice = 1.50;
         const double marsPrice = 1.40;
         const double tonysPrice = 1.60;
         const double cokePrice = 1.20;
 
-        double totalPrice = 0.00; // this holds the total price which will be caluclated for all items chosen
+        double totalPrice = 0.00; // this holds the total price which will be caluclated for all items chosen. this is displayed at end of order
 
-        // amount of stock available in vendy
-        //will need to deduct the stock amount and give calculation for amount left in vending machine
+        // amount of stock available in vending machine
         const int butterfingerQuantity = 20;
         const int marsQuantity = 20;
         const int tonysQuantity = 20;
@@ -86,20 +86,20 @@ namespace Vending_Machine
 
             foreach (string product in listBox1.Items)
             {
-                if (product.Contains("Butterfinger, "))
+                if (product.Contains("Butterfinger "))
                 {
                     butterfingerChosen++;
                 }
-                else if (product.Contains("Mars"))
+                else if (product.Contains("Mars "))
                 {
                     marsChosen++;
                 }
 
-                else if (product.Contains("Tony's"))
+                else if (product.Contains("Tony's "))
                 {
                     tonysChosen++;
                 }
-                else if (product.Contains("Coke, £1.20"))
+                else if (product.Contains("Coke "))
                 {
                     cokeChosen++;
                 }
@@ -113,7 +113,7 @@ namespace Vending_Machine
             double tonysTotal = tonysChosen * tonysPrice;
             double cokeTotal = cokeChosen * cokePrice;
 
-           double totalPrice = marsTotal + butterfingerTotal + tonysTotal + cokeTotal;
+            double totalPrice = marsTotal + butterfingerTotal + tonysTotal + cokeTotal;
 
 
             // this displays the full order in the order summary list box with amount and price
@@ -141,9 +141,13 @@ namespace Vending_Machine
 
         }
 
+        void DisplayTotalPrice()
+        {
+            label10.Text = "Total Price: " + totalPrice.ToString("£0.00"); // this displays total price in the total label
+        }
+
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
 
@@ -158,8 +162,6 @@ namespace Vending_Machine
             // group or sort more than one of the same item together and then display this in the list box
 
             // check stock
-
-            int tonysChosen = 0;
 
         }
 
@@ -183,7 +185,7 @@ namespace Vending_Machine
 
         private void Coke_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add("Coke" + cokePrice.ToString("£0.00"));
+            listBox1.Items.Add("Coke " + cokePrice.ToString("£0.00"));
             MessageBox.Show("Coke Selected"); // confirms user selected a can of coke
             totalPrice += cokePrice;
 
@@ -191,12 +193,22 @@ namespace Vending_Machine
 
         private void orderSummary_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //This prints stored items in a list as a summary. Add up the total price of items in the list and displays after finish is clicked
+
         }
 
         private void checkoutSave_Click(object sender, EventArgs e)
         {
             //opens the box below for the user to pay
+            //function in here to disable the buttons for ordering products and open payment box for inserting the coins
+
+            disableOrderZone();
+
+            paymentZone.Visible = true;
+            paymentZone.Enabled = true;
+            paymentBox.Visible = true;
+            paymentBox.Enabled = true;
+
+
         }
 
         private void cancelAll_Click(object sender, EventArgs e)
@@ -213,10 +225,10 @@ namespace Vending_Machine
         {
 
             calculateOrderSummary(); //calling this to calculate order summary and display in that list box
-
+            DisplayTotalPrice(); // after clicking the finish box this displays the total user owes for their items
         }
 
-     
+
         //these are the drag drop functions to allow the insert of money into the machine
         private void twoPound_mouseDown(object sender, MouseEventArgs e)
         {
@@ -279,10 +291,10 @@ namespace Vending_Machine
         }
         private void paymentBox_DragDrop(object sender, DragEventArgs e)
         {
-           
+
 
             // get the value of the coin that was dropped into the payment box using coinsinserted variable
-          
+
             string coinsInserted = (string)e.Data.GetData(DataFormats.StringFormat); //use stringformat from example2.
                                                                                      //could also use this to pass a file path to text file to save order summary
 
@@ -296,25 +308,86 @@ namespace Vending_Machine
             paymentBox.AllowDrop = true;
         }
 
-       
 
-     
+        private void disableOrderZone()
+        {
+            //this function disables the buttons for ordering products and then opens the payment box for inserting coins. called when checkout button clicked
+            // place this function in the checkout button click event that activates the payment  box
+
+            if (checkoutSave.Enabled == true)
+            {
+                butterfinger.Enabled = false;
+                Mars.Enabled = false;
+                Tonys.Enabled = false;
+                Coke.Enabled = false;
+                speakVendy.Enabled = false;
+                confirmItems.Enabled = false;
+            }
+        }
+
+        private void orderZone_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void paymentZone_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+            //this uses the total price variable from the price of the items  selected 
+            label10.Text = "Total Price: " + totalPrice.ToString("£0.00");
+        }
+
+        private void finalAmount_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
-    public class Checkout
+
+
+    public class Checkout // keeping payment functions separate for security
     {
+        //variable displaying total amount passed to checkout class from form1
+        
 
         public void moneyPaid() // calculates the money paid by user from coins inserted 
         {
+            
+            // money inserted calculated and taken away from total displayed
+            
         
         }
 
-        private void calculateChange()
+        // this is for the finalamount click event to display total amount for items and decrements as coins are inserted
+        public void AmountDue()
         {
+
+
+        }
+
+        // this caluclates the change owed to user and displays in a message box
+        public void calculateChange(double totalAmount, double totalPaid ) 
+        {
+
+
+
 
         }
 
 
      
     }
+
+    public class Sentientvendy
+    {
+
+        //this is the vendy class - it will contain a dictionary of products, a game and a prize.
+        //this class will be called when a person clicks the speak to vendy button
+        //it will contain more advanced code and experiment with extra c# features; radio buttons, check boxes, list and dictionary
+
+    }
+
 }

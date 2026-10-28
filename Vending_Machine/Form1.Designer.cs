@@ -65,6 +65,8 @@
             paymentBox = new PictureBox();
             changeOwed = new Label();
             finalAmount = new Label();
+            paymentZone = new GroupBox();
+            orderZone = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -79,13 +81,15 @@
             ((System.ComponentModel.ISupportInitialize)twoP).BeginInit();
             ((System.ComponentModel.ISupportInitialize)oneP).BeginInit();
             ((System.ComponentModel.ISupportInitialize)paymentBox).BeginInit();
+            paymentZone.SuspendLayout();
+            orderZone.SuspendLayout();
             SuspendLayout();
             // 
             // listBox1
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 25;
-            listBox1.Location = new Point(837, 346);
+            listBox1.Location = new Point(818, 44);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(340, 279);
             listBox1.TabIndex = 0;
@@ -94,7 +98,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(34, 138);
+            pictureBox1.Location = new Point(44, 44);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(109, 46);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -104,7 +108,7 @@
             // label1
             // 
             label1.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(-8, 187);
+            label1.Location = new Point(2, 93);
             label1.Name = "label1";
             label1.Size = new Size(185, 36);
             label1.TabIndex = 3;
@@ -114,7 +118,7 @@
             // butterfinger
             // 
             butterfinger.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            butterfinger.Location = new Point(12, 251);
+            butterfinger.Location = new Point(22, 157);
             butterfinger.Name = "butterfinger";
             butterfinger.Size = new Size(159, 34);
             butterfinger.TabIndex = 4;
@@ -125,7 +129,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(57, 223);
+            label2.Location = new Point(67, 129);
             label2.Name = "label2";
             label2.Size = new Size(56, 25);
             label2.TabIndex = 5;
@@ -134,7 +138,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.Mars_bar;
-            pictureBox2.Location = new Point(190, 138);
+            pictureBox2.Location = new Point(200, 44);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(129, 46);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -155,7 +159,7 @@
             // label4
             // 
             label4.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(174, 187);
+            label4.Location = new Point(184, 93);
             label4.Name = "label4";
             label4.Size = new Size(149, 38);
             label4.TabIndex = 8;
@@ -165,7 +169,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(220, 220);
+            label5.Location = new Point(230, 126);
             label5.Name = "label5";
             label5.Size = new Size(56, 25);
             label5.TabIndex = 9;
@@ -174,7 +178,7 @@
             // Mars
             // 
             Mars.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Mars.Location = new Point(190, 251);
+            Mars.Location = new Point(200, 157);
             Mars.Name = "Mars";
             Mars.Size = new Size(133, 34);
             Mars.TabIndex = 10;
@@ -185,7 +189,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.TonysChoclolate;
-            pictureBox3.Location = new Point(360, 138);
+            pictureBox3.Location = new Point(370, 44);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(114, 46);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -196,7 +200,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(381, 194);
+            label6.Location = new Point(391, 100);
             label6.Name = "label6";
             label6.Size = new Size(71, 23);
             label6.TabIndex = 12;
@@ -205,7 +209,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(386, 218);
+            label7.Location = new Point(396, 124);
             label7.Name = "label7";
             label7.Size = new Size(56, 25);
             label7.TabIndex = 13;
@@ -214,7 +218,7 @@
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(954, 24);
+            pictureBox4.Location = new Point(548, 398);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(233, 227);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -224,7 +228,7 @@
             // Tonys
             // 
             Tonys.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Tonys.Location = new Point(348, 251);
+            Tonys.Location = new Point(358, 157);
             Tonys.Name = "Tonys";
             Tonys.Size = new Size(126, 34);
             Tonys.TabIndex = 16;
@@ -235,7 +239,7 @@
             // pictureBox5
             // 
             pictureBox5.Image = Properties.Resources.Coke;
-            pictureBox5.Location = new Point(44, 314);
+            pictureBox5.Location = new Point(54, 220);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(86, 116);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -246,7 +250,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(59, 439);
+            label8.Location = new Point(69, 345);
             label8.Name = "label8";
             label8.Size = new Size(57, 23);
             label8.TabIndex = 18;
@@ -255,7 +259,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(60, 474);
+            label9.Location = new Point(70, 380);
             label9.Name = "label9";
             label9.Size = new Size(56, 25);
             label9.TabIndex = 19;
@@ -264,7 +268,7 @@
             // Coke
             // 
             Coke.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Coke.Location = new Point(17, 502);
+            Coke.Location = new Point(27, 408);
             Coke.Name = "Coke";
             Coke.Size = new Size(142, 34);
             Coke.TabIndex = 20;
@@ -276,7 +280,7 @@
             // 
             orderSummary.FormattingEnabled = true;
             orderSummary.ItemHeight = 25;
-            orderSummary.Location = new Point(834, 694);
+            orderSummary.Location = new Point(815, 392);
             orderSummary.Name = "orderSummary";
             orderSummary.Size = new Size(340, 254);
             orderSummary.TabIndex = 21;
@@ -285,7 +289,7 @@
             // speakVendy
             // 
             speakVendy.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            speakVendy.Location = new Point(954, 257);
+            speakVendy.Location = new Point(548, 631);
             speakVendy.Name = "speakVendy";
             speakVendy.Size = new Size(233, 71);
             speakVendy.TabIndex = 22;
@@ -294,7 +298,7 @@
             // 
             // confirmItems
             // 
-            confirmItems.Location = new Point(1040, 631);
+            confirmItems.Location = new Point(1021, 329);
             confirmItems.Name = "confirmItems";
             confirmItems.Size = new Size(128, 57);
             confirmItems.TabIndex = 24;
@@ -304,7 +308,7 @@
             // 
             // checkoutSave
             // 
-            checkoutSave.Location = new Point(837, 954);
+            checkoutSave.Location = new Point(818, 652);
             checkoutSave.Name = "checkoutSave";
             checkoutSave.Size = new Size(340, 76);
             checkoutSave.TabIndex = 25;
@@ -314,15 +318,16 @@
             // 
             // label10
             // 
-            label10.Location = new Point(689, 346);
+            label10.Location = new Point(670, 44);
             label10.Name = "label10";
             label10.Size = new Size(128, 143);
             label10.TabIndex = 26;
             label10.Text = "Total Price";
+            label10.Click += label10_Click;
             // 
             // cancelAll
             // 
-            cancelAll.Location = new Point(1065, 1036);
+            cancelAll.Location = new Point(1046, 734);
             cancelAll.Name = "cancelAll";
             cancelAll.Size = new Size(112, 34);
             cancelAll.TabIndex = 27;
@@ -333,7 +338,7 @@
             // twoPound
             // 
             twoPound.Image = Properties.Resources._2Pound;
-            twoPound.Location = new Point(34, 1166);
+            twoPound.Location = new Point(43, 49);
             twoPound.Name = "twoPound";
             twoPound.Size = new Size(113, 111);
             twoPound.SizeMode = PictureBoxSizeMode.Zoom;
@@ -344,7 +349,7 @@
             // onePound
             // 
             onePound.Image = Properties.Resources._1Pound;
-            onePound.Location = new Point(153, 1166);
+            onePound.Location = new Point(162, 49);
             onePound.Name = "onePound";
             onePound.Size = new Size(109, 111);
             onePound.SizeMode = PictureBoxSizeMode.Zoom;
@@ -355,7 +360,7 @@
             // fiftyP
             // 
             fiftyP.Image = Properties.Resources._50P;
-            fiftyP.Location = new Point(268, 1166);
+            fiftyP.Location = new Point(277, 49);
             fiftyP.Name = "fiftyP";
             fiftyP.Size = new Size(109, 111);
             fiftyP.TabIndex = 30;
@@ -365,7 +370,7 @@
             // twentyP
             // 
             twentyP.Image = Properties.Resources._20P;
-            twentyP.Location = new Point(381, 1166);
+            twentyP.Location = new Point(390, 49);
             twentyP.Name = "twentyP";
             twentyP.Size = new Size(109, 111);
             twentyP.SizeMode = PictureBoxSizeMode.Zoom;
@@ -376,7 +381,7 @@
             // tenP
             // 
             tenP.Image = Properties.Resources._10P;
-            tenP.Location = new Point(34, 1283);
+            tenP.Location = new Point(43, 166);
             tenP.Name = "tenP";
             tenP.Size = new Size(113, 111);
             tenP.SizeMode = PictureBoxSizeMode.Zoom;
@@ -387,7 +392,7 @@
             // fiveP
             // 
             fiveP.Image = Properties.Resources._5P;
-            fiveP.Location = new Point(155, 1283);
+            fiveP.Location = new Point(164, 166);
             fiveP.Name = "fiveP";
             fiveP.Size = new Size(107, 111);
             fiveP.SizeMode = PictureBoxSizeMode.Zoom;
@@ -398,7 +403,7 @@
             // twoP
             // 
             twoP.Image = Properties.Resources._2P;
-            twoP.Location = new Point(268, 1283);
+            twoP.Location = new Point(277, 166);
             twoP.Name = "twoP";
             twoP.Size = new Size(109, 111);
             twoP.SizeMode = PictureBoxSizeMode.Zoom;
@@ -409,7 +414,7 @@
             // oneP
             // 
             oneP.Image = Properties.Resources._1P;
-            oneP.Location = new Point(383, 1283);
+            oneP.Location = new Point(392, 166);
             oneP.Name = "oneP";
             oneP.Size = new Size(107, 111);
             oneP.SizeMode = PictureBoxSizeMode.Zoom;
@@ -420,7 +425,7 @@
             // paymentBox
             // 
             paymentBox.Image = Properties.Resources.coinSlot;
-            paymentBox.Location = new Point(822, 1167);
+            paymentBox.Location = new Point(780, 64);
             paymentBox.Name = "paymentBox";
             paymentBox.Size = new Size(243, 227);
             paymentBox.SizeMode = PictureBoxSizeMode.Zoom;
@@ -431,7 +436,7 @@
             // 
             // changeOwed
             // 
-            changeOwed.Location = new Point(135, 1450);
+            changeOwed.Location = new Point(43, 341);
             changeOwed.Name = "changeOwed";
             changeOwed.Size = new Size(317, 93);
             changeOwed.TabIndex = 37;
@@ -439,53 +444,76 @@
             // 
             // finalAmount
             // 
-            finalAmount.Location = new Point(615, 1181);
+            finalAmount.Location = new Point(624, 64);
             finalAmount.Name = "finalAmount";
             finalAmount.Size = new Size(156, 76);
             finalAmount.TabIndex = 38;
             finalAmount.Text = "Amount Due";
+            finalAmount.Click += finalAmount_Click;
+            // 
+            // paymentZone
+            // 
+            paymentZone.Controls.Add(fiftyP);
+            paymentZone.Controls.Add(changeOwed);
+            paymentZone.Controls.Add(finalAmount);
+            paymentZone.Controls.Add(paymentBox);
+            paymentZone.Controls.Add(twoPound);
+            paymentZone.Controls.Add(onePound);
+            paymentZone.Controls.Add(twentyP);
+            paymentZone.Controls.Add(oneP);
+            paymentZone.Controls.Add(tenP);
+            paymentZone.Controls.Add(twoP);
+            paymentZone.Controls.Add(fiveP);
+            paymentZone.Location = new Point(57, 1095);
+            paymentZone.Name = "paymentZone";
+            paymentZone.Size = new Size(1062, 463);
+            paymentZone.TabIndex = 39;
+            paymentZone.TabStop = false;
+            paymentZone.Text = "Payment Zone";
+            paymentZone.Enter += paymentZone_Enter;
+            // 
+            // orderZone
+            // 
+            orderZone.Controls.Add(cancelAll);
+            orderZone.Controls.Add(label10);
+            orderZone.Controls.Add(checkoutSave);
+            orderZone.Controls.Add(confirmItems);
+            orderZone.Controls.Add(speakVendy);
+            orderZone.Controls.Add(orderSummary);
+            orderZone.Controls.Add(Coke);
+            orderZone.Controls.Add(label9);
+            orderZone.Controls.Add(label8);
+            orderZone.Controls.Add(pictureBox5);
+            orderZone.Controls.Add(Tonys);
+            orderZone.Controls.Add(pictureBox4);
+            orderZone.Controls.Add(label7);
+            orderZone.Controls.Add(label6);
+            orderZone.Controls.Add(pictureBox3);
+            orderZone.Controls.Add(Mars);
+            orderZone.Controls.Add(label5);
+            orderZone.Controls.Add(label4);
+            orderZone.Controls.Add(pictureBox2);
+            orderZone.Controls.Add(label2);
+            orderZone.Controls.Add(butterfinger);
+            orderZone.Controls.Add(label1);
+            orderZone.Controls.Add(pictureBox1);
+            orderZone.Controls.Add(listBox1);
+            orderZone.Location = new Point(19, 146);
+            orderZone.Name = "orderZone";
+            orderZone.Size = new Size(1181, 809);
+            orderZone.TabIndex = 40;
+            orderZone.TabStop = false;
+            orderZone.Text = "Order Zone";
+            orderZone.Enter += orderZone_Enter;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1212, 1570);
-            Controls.Add(finalAmount);
-            Controls.Add(changeOwed);
-            Controls.Add(paymentBox);
-            Controls.Add(oneP);
-            Controls.Add(twoP);
-            Controls.Add(fiveP);
-            Controls.Add(tenP);
-            Controls.Add(twentyP);
-            Controls.Add(fiftyP);
-            Controls.Add(onePound);
-            Controls.Add(twoPound);
-            Controls.Add(cancelAll);
-            Controls.Add(label10);
-            Controls.Add(checkoutSave);
-            Controls.Add(confirmItems);
-            Controls.Add(speakVendy);
-            Controls.Add(orderSummary);
-            Controls.Add(Coke);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(pictureBox5);
-            Controls.Add(Tonys);
-            Controls.Add(pictureBox4);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(pictureBox3);
-            Controls.Add(Mars);
-            Controls.Add(label5);
-            Controls.Add(label4);
+            Controls.Add(orderZone);
+            Controls.Add(paymentZone);
             Controls.Add(label3);
-            Controls.Add(pictureBox2);
-            Controls.Add(label2);
-            Controls.Add(butterfinger);
-            Controls.Add(label1);
-            Controls.Add(pictureBox1);
-            Controls.Add(listBox1);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -503,8 +531,10 @@
             ((System.ComponentModel.ISupportInitialize)twoP).EndInit();
             ((System.ComponentModel.ISupportInitialize)oneP).EndInit();
             ((System.ComponentModel.ISupportInitialize)paymentBox).EndInit();
+            paymentZone.ResumeLayout(false);
+            orderZone.ResumeLayout(false);
+            orderZone.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -545,5 +575,7 @@
         private PictureBox paymentBox;
         private Label changeOwed;
         private Label finalAmount;
+        private GroupBox paymentZone;
+        private GroupBox orderZone;
     }
 }
