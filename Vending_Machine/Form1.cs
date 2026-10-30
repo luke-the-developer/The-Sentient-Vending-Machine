@@ -239,14 +239,6 @@ namespace Vending_Machine
 
             twoPound.DoDragDrop(twoPoundCoin.ToString(), DragDropEffects.Copy);
 
-            if (totalCoinsInserted > 0)
-            {
-                checkout.moneyPaid(totalCoinsInserted, totalPrice); // calls checkout class and functions fo each coin inserted to caluclate total amount paid
-                totalPrice -= totalCoinsInserted; // this decrements the amount due
-            }
-
-            MessageBox.Show("You have inserted £2.00\n\n Total remaining: £ " + totalPrice.ToString());
-
         }
 
         private void onePound_mouseDown(object sender, MouseEventArgs e)
@@ -254,13 +246,6 @@ namespace Vending_Machine
 
             onePound.DoDragDrop(onePoundCoin.ToString(), DragDropEffects.Copy);
 
-            if (totalCoinsInserted > 0)
-            {
-                checkout.moneyPaid(totalCoinsInserted, totalPrice); // calls checkout class and functions fo each coin inserted to caluclate total amount paid
-                totalPrice -= totalCoinsInserted; // this decrements the amount due
-            }
-
-            MessageBox.Show("You have inserted £1.00\n\n Total remaining: £ " + totalPrice.ToString());
         }
 
         private void fiftyP_mouseDown(object sender, MouseEventArgs e)
@@ -268,25 +253,12 @@ namespace Vending_Machine
 
             fiftyP.DoDragDrop(fiftyPCoin.ToString(), DragDropEffects.Copy);
 
-            if (totalCoinsInserted > 0)
-            {
-                checkout.moneyPaid(totalCoinsInserted, totalPrice); // calls checkout class and functions fo each coin inserted to caluclate total amount paid
-                totalPrice -= totalCoinsInserted; // this decrements the amount due
-            }
-            MessageBox.Show("You have inserted 0.50\n\n Total remaining: £ " + totalPrice.ToString());
         }
 
         private void twentyP_mouseDown(object sender, MouseEventArgs e)
         {
             twentyP.DoDragDrop(twentyPCoin.ToString(), DragDropEffects.Copy);
 
-            if (totalCoinsInserted > 0)
-            {
-                checkout.moneyPaid(totalCoinsInserted, totalPrice); // calls checkout class and functions fo each coin inserted to caluclate total amount paid
-                totalPrice -= totalCoinsInserted; 
-            }
-
-            MessageBox.Show("You have inserted 0.20\n\n Total remaining: £ " + totalPrice.ToString());
         }
 
         private void tenP_mouseDown(object sender, MouseEventArgs e)
@@ -294,62 +266,33 @@ namespace Vending_Machine
 
             tenP.DoDragDrop(tenPCoin.ToString(), DragDropEffects.Copy);
 
-            if (totalCoinsInserted > 0)
-            {
-                checkout.moneyPaid(totalCoinsInserted, totalPrice); // calls checkout class and functions fo each coin inserted to caluclate total amount paid
-                totalPrice -= totalCoinsInserted; // this decrements the amount due
-            }
-
-            MessageBox.Show("You have inserted £0.10\n\n Total remaining: £ " + totalPrice.ToString());
         }
 
         private void fiveP_mouseDown(object sender, MouseEventArgs e)
         {
             fiveP.DoDragDrop(fivePCoin.ToString(), DragDropEffects.Copy);
 
-            if (totalCoinsInserted > 0)
-            {
-                checkout.moneyPaid(totalCoinsInserted, totalPrice); // calls checkout class and functions fo each coin inserted to caluclate total amount paid
-                totalPrice -= totalCoinsInserted; // this decrements the amount due
-            }
-
-            MessageBox.Show("You have inserted £0.05\n\n Total remaining: £ " + totalPrice.ToString());
         }
 
         private void twoP_mouseDown(object sender, MouseEventArgs e)
         {
             twoP.DoDragDrop(twoPCoin.ToString(), DragDropEffects.Copy);
 
-            if (totalCoinsInserted > 0)
-            {
-                checkout.moneyPaid(totalCoinsInserted, totalPrice); // calls checkout class and functions fo each coin inserted to caluclate total amount paid
-                totalPrice -= totalCoinsInserted; // this decrements the amount due
-            }
-
-            MessageBox.Show("You have inserted £0.02\n\n Total remaining: £ " + totalPrice.ToString());
         }
 
         private void oneP_mouseDown(object sender, MouseEventArgs e)
         {
             oneP.DoDragDrop(onePCoin.ToString(), DragDropEffects.Copy);
 
-            if (totalCoinsInserted > 0)
-            {
-                checkout.moneyPaid(totalCoinsInserted, totalPrice); // calls checkout class and functions fo each coin inserted to caluclate total amount paid
-                totalPrice -= totalCoinsInserted; // this decrements the amount due
-            }
-
-            MessageBox.Show("You have inserted £0.01\n\n Total remaining: £ " + totalPrice.ToString());
         }
 
         private void paymentBox_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Copy;
         }
+
         private void paymentBox_DragDrop(object sender, DragEventArgs e)
         {
-
-
             // get the value of the coin that was dropped into the payment box using coinsinserted variable
 
             string coinsInserted = (string)e.Data.GetData(DataFormats.StringFormat); //use stringformat from example2.
@@ -358,14 +301,41 @@ namespace Vending_Machine
             //the total amount of coins inserted is calculated 
             totalCoinsInserted = double.Parse(coinsInserted); //parse the string to a double so i can do calculations for change owed
 
+            if (double.TryParse(coinsInserted, out double coinValue))
+            {
+                checkout.moneyPaid(coinValue); //uses a checkout class function to calculate total coins inserted 
+
+                PaymentDisplay(); // displays total paid, amount due and change due using the checkout class getters
+
+            }
+
+
         }
 
+        private void PaymentDisplay() // this displays coins entered in payment to vending machinecalculates amount due and change using checkout class functions
+        {
+
+            //calculate amount due and change
+
+            checkout.amountDue(totalPrice);
+            checkout.calculateChange(totalPrice);
+
+
+            // calling in checkout class functions getters
+            double totalPaid = checkout.getMoneyPaid();
+            double amountDue = checkout.getAmountDue();
+            double changeDue = checkout.getChangeDue();
+
+            //displays each amount in payment box so user can see running totals
+            finalAmount.Text = "Total Amount: " + totalPrice.ToString("£0.00") + "\nMoney paid: " + moneyPaid.ToString("£0.00") + "\nAmount Remaining: " + amountDue.ToString("£0.00") + "\nChange Due: " + changeDue.ToString("£0.00");
+
+        }
 
 
 
         // drag drop to remove items from list box 1 into a bin. This feature will allow removal of each individual item
 
-       // checkout.moneyPaid(totalCoinsInserted, totalPrice); 
+        // checkout.moneyPaid(totalCoinsInserted, totalPrice); 
 
 
 
@@ -409,92 +379,101 @@ namespace Vending_Machine
 
         private void finalAmount_Click(object sender, EventArgs e) //click event in case amount doesnt show 
         {
-
-            //shows the total amount from the items selected in the order zone total price
-
-            finalAmount.Text = "Total Amount: " + totalPrice.ToString("£0.00");
-
-
-            if (totalCoinsInserted > 0)
-            {
-                checkout.moneyPaid(totalCoinsInserted, totalPrice); // this calls the checkout class functions to calculate a running total
-            }
-
-            if (totalCoinsInserted >= totalPrice)
-            {
-                double changeGiven = totalCoinsInserted - totalPrice;
-                MessageBox.Show("Payment accepted. Change due: " + changeGiven.ToString("£0.00")); //gives the change due to user
-            }
+            //this displays the various running totals so a user can click to display them if it doesnt show automatically
+            PaymentDisplay();
 
         }
 
-        private void changeOwed_Click(object sender, EventArgs e)
-        {
 
-
-        }
 
         private void cancelComplete_Click(object sender, EventArgs e)
         {
 
-
-
             if (cancelComplete.Enabled == true)
             {
+                listBox1.Items.Clear();
                 orderSummary.Items.Clear();
                 MessageBox.Show("All items removed from order summary. Come back soon!");
             }
 
         }
+
+        private void change_Click(object sender, EventArgs e)
+        {
+            changeDue = checkout.getChangeDue();
+
+            change.Text = "Change: " + changeDue.ToString("£0.00");
+        }
+
+        private void collectPurchase_Click(object sender, EventArgs e)
+        {
+            // extra function for saving order summary to text file to be inserted here
+
+
+
+            // this resets the vending machine after the use has collected their items and change
+
+            listBox1.Items.Clear();
+            orderSummary.Items.Clear();
+            change.Text = "Change: £0.00";
+            finalAmount.Text = "Total Amount: " + totalPrice.ToString("£0.00") + "\nMoney paid: " + moneyPaid.ToString("£0.00") + "\nAmount Remaining: " + totalPrice.ToString("£0.00") + "\nChange Due: " + changeDue.ToString("£0.00");
+            label10.Text = "Total Price: " + totalPrice.ToString("£0.00");
+            totalPrice = 0.00;
+
+
+        }
     }
 
-    // TO DO: work out issues with logic in checkout class and main form for calculating the change and amount due. Keeping Total price and then total coins inserted and amount due separate. 
-    //then compare two values which will assess if amount has been paid and any change
 
     public class Checkout // keeping payment functions separate for security
     {
-        //variable displaying total amount passed to checkout class from form1
+        //uses private variables which can be accessed from the public getters in the main form class
 
-        public void moneyPaid(double totalCoinsInserted, double totalPrice) // calculates the money paid by user from coins inserted 
+        private double totalCoinsInserted = 0.00;
+        private double amountRemaining = 0.00;
+        private double totalPrice = 0.00;
+        private double changeDue = 0.00;
+        
+      
+        public void moneyPaid(double coinValue) //need to pass double coinvalue to this function then add to totalcoinsinserted to maintain a running total
         {
-            
-            // money inserted calculated and taken away from total displayed
-            
-            if (totalCoinsInserted >= totalPrice)
-            {
-                double changeGiven = totalCoinsInserted - totalPrice;
-                MessageBox.Show("Payment accepted. Change due: " + changeGiven.ToString("£0.00")); //gives the change due to user
+            totalCoinsInserted += coinValue;
+        }
 
-            }
-            if (totalCoinsInserted < totalPrice)
-            {
-                double amountDue = totalPrice - totalCoinsInserted;
-                MessageBox.Show("Amount to be paid: " + amountDue.ToString("£0.00"));
-            }
+        public double getMoneyPaid() //gets the money paid
+        {
+            return totalCoinsInserted;
+        }
 
-            else
-            {
-                double amountDue = totalPrice - totalCoinsInserted;
-                MessageBox.Show("Amount to be paid: " + amountDue.ToString("£0.00"));
-            }
+
+        public void amountDue(double totalPrice) 
+        {
+            amountRemaining = totalPrice - totalCoinsInserted;       
 
         }
 
-        public void changeOwed(double totalCoinsInserted, double totalPrice)
+        public double getAmountDue()  //gets the amount due 
         {
-            if (totalCoinsInserted >= totalPrice)
-            {
-                double changeGiven = totalCoinsInserted - totalPrice;
-                MessageBox.Show("Payment accepted. Change due: " + changeGiven.ToString("£0.00"));
-            }
-            else
-            {
-                double amountDue = totalPrice - totalCoinsInserted;
-                MessageBox.Show("Amount outstanding: " + amountDue.ToString("£0.00"));
-            }
+            return amountRemaining;
         }
 
-        // this is for the finalamount click event to display total amount for items and decrements as coins are inserted
+        public void calculateChange(double totalPrice) 
+        {
+
+            changeDue = totalCoinsInserted - totalPrice;
+
+            if (changeDue < 0)
+            {
+                changeDue = 0.00; // if the user has not paid enough, change due is set to 0
+            }
+
+        }
+        public double getChangeDue()  //gets the change due
+        {
+            return changeDue;
+        }
+
+        
         public void deductStock()
         {
             //this function is called to deduct the stock of items in vending machine and sends a notification to owner when stock is low
@@ -515,6 +494,13 @@ namespace Vending_Machine
         //this is the vendy class - it will contain a dictionary of products, a game and a prize.
         //this class will be called when a person clicks the speak to vendy button
         //it will contain more advanced code and experiment with extra c# features; radio buttons, check boxes, list and dictionary
+
+
+
+
+
+
+
 
     }
 

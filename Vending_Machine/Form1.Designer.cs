@@ -63,11 +63,14 @@
             twoP = new PictureBox();
             oneP = new PictureBox();
             paymentBox = new PictureBox();
-            changeOwed = new Label();
+            change = new Label();
             finalAmount = new Label();
             paymentZone = new GroupBox();
+            collectPurchase = new Button();
             orderZone = new GroupBox();
             cancelComplete = new Button();
+            textBox1 = new TextBox();
+            vendyBox = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -84,13 +87,14 @@
             ((System.ComponentModel.ISupportInitialize)paymentBox).BeginInit();
             paymentZone.SuspendLayout();
             orderZone.SuspendLayout();
+            vendyBox.SuspendLayout();
             SuspendLayout();
             // 
             // listBox1
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 25;
-            listBox1.Location = new Point(818, 47);
+            listBox1.Location = new Point(545, 43);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(340, 279);
             listBox1.TabIndex = 0;
@@ -99,7 +103,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(44, 47);
+            pictureBox1.Location = new Point(203, 215);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(109, 46);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -109,7 +113,7 @@
             // label1
             // 
             label1.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(2, 96);
+            label1.Location = new Point(161, 264);
             label1.Name = "label1";
             label1.Size = new Size(185, 36);
             label1.TabIndex = 3;
@@ -119,7 +123,7 @@
             // butterfinger
             // 
             butterfinger.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            butterfinger.Location = new Point(22, 160);
+            butterfinger.Location = new Point(181, 328);
             butterfinger.Name = "butterfinger";
             butterfinger.Size = new Size(159, 34);
             butterfinger.TabIndex = 4;
@@ -130,7 +134,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(67, 132);
+            label2.Location = new Point(226, 300);
             label2.Name = "label2";
             label2.Size = new Size(56, 25);
             label2.TabIndex = 5;
@@ -139,7 +143,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.Mars_bar;
-            pictureBox2.Location = new Point(200, 47);
+            pictureBox2.Location = new Point(192, 43);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(129, 46);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -160,7 +164,7 @@
             // label4
             // 
             label4.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(184, 96);
+            label4.Location = new Point(176, 92);
             label4.Name = "label4";
             label4.Size = new Size(149, 38);
             label4.TabIndex = 8;
@@ -170,7 +174,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(230, 129);
+            label5.Location = new Point(222, 125);
             label5.Name = "label5";
             label5.Size = new Size(56, 25);
             label5.TabIndex = 9;
@@ -179,7 +183,7 @@
             // Mars
             // 
             Mars.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Mars.Location = new Point(200, 160);
+            Mars.Location = new Point(192, 156);
             Mars.Name = "Mars";
             Mars.Size = new Size(133, 34);
             Mars.TabIndex = 10;
@@ -190,7 +194,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.TonysChoclolate;
-            pictureBox3.Location = new Point(370, 47);
+            pictureBox3.Location = new Point(21, 43);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(114, 46);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -201,7 +205,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(391, 103);
+            label6.Location = new Point(42, 99);
             label6.Name = "label6";
             label6.Size = new Size(71, 23);
             label6.TabIndex = 12;
@@ -210,7 +214,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(396, 127);
+            label7.Location = new Point(47, 123);
             label7.Name = "label7";
             label7.Size = new Size(56, 25);
             label7.TabIndex = 13;
@@ -219,7 +223,7 @@
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(548, 401);
+            pictureBox4.Location = new Point(68, 45);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(233, 227);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -229,7 +233,7 @@
             // Tonys
             // 
             Tonys.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Tonys.Location = new Point(358, 160);
+            Tonys.Location = new Point(9, 156);
             Tonys.Name = "Tonys";
             Tonys.Size = new Size(126, 34);
             Tonys.TabIndex = 16;
@@ -240,7 +244,7 @@
             // pictureBox5
             // 
             pictureBox5.Image = Properties.Resources.Coke;
-            pictureBox5.Location = new Point(54, 223);
+            pictureBox5.Location = new Point(222, 402);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(86, 116);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -251,7 +255,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(69, 348);
+            label8.Location = new Point(237, 527);
             label8.Name = "label8";
             label8.Size = new Size(57, 23);
             label8.TabIndex = 18;
@@ -260,7 +264,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(70, 383);
+            label9.Location = new Point(238, 562);
             label9.Name = "label9";
             label9.Size = new Size(56, 25);
             label9.TabIndex = 19;
@@ -269,7 +273,7 @@
             // Coke
             // 
             Coke.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Coke.Location = new Point(27, 411);
+            Coke.Location = new Point(195, 590);
             Coke.Name = "Coke";
             Coke.Size = new Size(142, 34);
             Coke.TabIndex = 20;
@@ -281,7 +285,7 @@
             // 
             orderSummary.FormattingEnabled = true;
             orderSummary.ItemHeight = 25;
-            orderSummary.Location = new Point(815, 395);
+            orderSummary.Location = new Point(542, 391);
             orderSummary.Name = "orderSummary";
             orderSummary.Size = new Size(340, 254);
             orderSummary.TabIndex = 21;
@@ -290,7 +294,7 @@
             // speakVendy
             // 
             speakVendy.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            speakVendy.Location = new Point(548, 634);
+            speakVendy.Location = new Point(68, 278);
             speakVendy.Name = "speakVendy";
             speakVendy.Size = new Size(233, 71);
             speakVendy.TabIndex = 22;
@@ -299,7 +303,7 @@
             // 
             // confirmItems
             // 
-            confirmItems.Location = new Point(1021, 332);
+            confirmItems.Location = new Point(748, 328);
             confirmItems.Name = "confirmItems";
             confirmItems.Size = new Size(128, 57);
             confirmItems.TabIndex = 24;
@@ -309,7 +313,7 @@
             // 
             // checkoutSave
             // 
-            checkoutSave.Location = new Point(818, 655);
+            checkoutSave.Location = new Point(545, 651);
             checkoutSave.Name = "checkoutSave";
             checkoutSave.Size = new Size(340, 76);
             checkoutSave.TabIndex = 25;
@@ -319,7 +323,7 @@
             // 
             // label10
             // 
-            label10.Location = new Point(670, 47);
+            label10.Location = new Point(411, 43);
             label10.Name = "label10";
             label10.Size = new Size(128, 143);
             label10.TabIndex = 26;
@@ -328,7 +332,7 @@
             // 
             // cancelAll
             // 
-            cancelAll.Location = new Point(1043, 737);
+            cancelAll.Location = new Point(770, 733);
             cancelAll.Name = "cancelAll";
             cancelAll.Size = new Size(115, 52);
             cancelAll.TabIndex = 27;
@@ -426,7 +430,7 @@
             // paymentBox
             // 
             paymentBox.Image = Properties.Resources.coinSlot;
-            paymentBox.Location = new Point(780, 64);
+            paymentBox.Location = new Point(949, 50);
             paymentBox.Name = "paymentBox";
             paymentBox.Size = new Size(243, 227);
             paymentBox.SizeMode = PictureBoxSizeMode.Zoom;
@@ -435,28 +439,29 @@
             paymentBox.DragDrop += paymentBox_DragDrop;
             paymentBox.DragEnter += paymentBox_DragEnter;
             // 
-            // changeOwed
+            // change
             // 
-            changeOwed.Location = new Point(43, 341);
-            changeOwed.Name = "changeOwed";
-            changeOwed.Size = new Size(317, 93);
-            changeOwed.TabIndex = 37;
-            changeOwed.Text = "change";
-            changeOwed.Click += changeOwed_Click;
+            change.Location = new Point(29, 332);
+            change.Name = "change";
+            change.Size = new Size(265, 93);
+            change.TabIndex = 37;
+            change.Text = "Press for Change";
+            change.Click += change_Click;
             // 
             // finalAmount
             // 
-            finalAmount.Location = new Point(604, 64);
+            finalAmount.Location = new Point(612, 49);
             finalAmount.Name = "finalAmount";
-            finalAmount.Size = new Size(156, 76);
+            finalAmount.Size = new Size(273, 228);
             finalAmount.TabIndex = 38;
             finalAmount.Text = "Amount Due";
             finalAmount.Click += finalAmount_Click;
             // 
             // paymentZone
             // 
+            paymentZone.Controls.Add(collectPurchase);
             paymentZone.Controls.Add(fiftyP);
-            paymentZone.Controls.Add(changeOwed);
+            paymentZone.Controls.Add(change);
             paymentZone.Controls.Add(finalAmount);
             paymentZone.Controls.Add(paymentBox);
             paymentZone.Controls.Add(twoPound);
@@ -466,13 +471,23 @@
             paymentZone.Controls.Add(tenP);
             paymentZone.Controls.Add(twoP);
             paymentZone.Controls.Add(fiveP);
-            paymentZone.Location = new Point(57, 1095);
+            paymentZone.Location = new Point(12, 1086);
             paymentZone.Name = "paymentZone";
-            paymentZone.Size = new Size(1062, 463);
+            paymentZone.Size = new Size(1311, 463);
             paymentZone.TabIndex = 39;
             paymentZone.TabStop = false;
             paymentZone.Text = "Payment Zone";
             paymentZone.Enter += paymentZone_Enter;
+            // 
+            // collectPurchase
+            // 
+            collectPurchase.Location = new Point(319, 332);
+            collectPurchase.Name = "collectPurchase";
+            collectPurchase.Size = new Size(180, 73);
+            collectPurchase.TabIndex = 39;
+            collectPurchase.Text = "Collect All";
+            collectPurchase.UseVisualStyleBackColor = true;
+            collectPurchase.Click += collectPurchase_Click;
             // 
             // orderZone
             // 
@@ -481,14 +496,12 @@
             orderZone.Controls.Add(label10);
             orderZone.Controls.Add(checkoutSave);
             orderZone.Controls.Add(confirmItems);
-            orderZone.Controls.Add(speakVendy);
             orderZone.Controls.Add(orderSummary);
             orderZone.Controls.Add(Coke);
             orderZone.Controls.Add(label9);
             orderZone.Controls.Add(label8);
             orderZone.Controls.Add(pictureBox5);
             orderZone.Controls.Add(Tonys);
-            orderZone.Controls.Add(pictureBox4);
             orderZone.Controls.Add(label7);
             orderZone.Controls.Add(label6);
             orderZone.Controls.Add(pictureBox3);
@@ -501,9 +514,9 @@
             orderZone.Controls.Add(label1);
             orderZone.Controls.Add(pictureBox1);
             orderZone.Controls.Add(listBox1);
-            orderZone.Location = new Point(19, 135);
+            orderZone.Location = new Point(12, 116);
             orderZone.Name = "orderZone";
-            orderZone.Size = new Size(1181, 809);
+            orderZone.Size = new Size(917, 900);
             orderZone.TabIndex = 40;
             orderZone.TabStop = false;
             orderZone.Text = "Order Zone";
@@ -511,7 +524,7 @@
             // 
             // cancelComplete
             // 
-            cancelComplete.Location = new Point(818, 737);
+            cancelComplete.Location = new Point(545, 733);
             cancelComplete.Name = "cancelComplete";
             cancelComplete.Size = new Size(208, 52);
             cancelComplete.TabIndex = 28;
@@ -519,11 +532,31 @@
             cancelComplete.UseVisualStyleBackColor = true;
             cancelComplete.Click += cancelComplete_Click;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(46, 369);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(287, 31);
+            textBox1.TabIndex = 41;
+            // 
+            // vendyBox
+            // 
+            vendyBox.Controls.Add(textBox1);
+            vendyBox.Controls.Add(pictureBox4);
+            vendyBox.Controls.Add(speakVendy);
+            vendyBox.Location = new Point(961, 128);
+            vendyBox.Name = "vendyBox";
+            vendyBox.Size = new Size(362, 888);
+            vendyBox.TabIndex = 42;
+            vendyBox.TabStop = false;
+            vendyBox.Text = "Vendy";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1212, 1570);
+            ClientSize = new Size(1346, 1570);
+            Controls.Add(vendyBox);
             Controls.Add(orderZone);
             Controls.Add(paymentZone);
             Controls.Add(label3);
@@ -547,6 +580,8 @@
             paymentZone.ResumeLayout(false);
             orderZone.ResumeLayout(false);
             orderZone.PerformLayout();
+            vendyBox.ResumeLayout(false);
+            vendyBox.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -586,10 +621,13 @@
         private PictureBox twoP;
         private PictureBox oneP;
         private PictureBox paymentBox;
-        private Label changeOwed;
+        private Label change;
         private Label finalAmount;
         private GroupBox paymentZone;
         private GroupBox orderZone;
         private Button cancelComplete;
+        private TextBox textBox1;
+        private GroupBox vendyBox;
+        private Button collectPurchase;
     }
 }
