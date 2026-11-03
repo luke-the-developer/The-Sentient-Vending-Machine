@@ -22,6 +22,14 @@
 //this could be a rand operator - nested inf statements on a loop. a random product selector implying the machine is sentient
 //could have a built in game function - sentient vending machine asks if you wanna play a game - can win prizes
 
+// Vendy To Do List
+// 1. clean up dictionary and list
+// 2. imporve the game with more questions and a score
+// 3. add the prizes and show this on the design 
+// 4. finish  extra functions on a win or lose and play again. 
+//5. add radio buttons or checkboxes to the different parts of the vendy prizes so user can choose a mystery prize from good or bad pile pending on their score
+
+
 using System.Collections.Specialized;
 using System.Numerics;
 using System.Security.Policy;
@@ -33,6 +41,10 @@ namespace Vending_Machine
     {
 
         Checkout checkout = new Checkout(); // I will use this to call separate functions built in the checkout class to calculate the amount due, money paid and change
+        
+        Sentientvendy sentient = new Sentientvendy(); //vendy extra feature
+
+        Dictionary<string, Product> vendingProducts = new Dictionary<string, Product>();
 
         // coins for vending machine set as const so value can not be changed
         const double onePoundCoin = 1.00;
@@ -57,13 +69,20 @@ namespace Vending_Machine
             paymentBox.AllowDrop = true;
             paymentZone.Enabled = false;
             cancelComplete.Enabled = false;
+
+            addProducts(); //function to add products to dictionary for vending machine
+
         }
 
-        //price of the products
-        const double butterfingerPrice = 1.50;
-        const double marsPrice = 1.40;
-        const double tonysPrice = 1.60;
-        const double cokePrice = 1.20;
+        //function for dictionary to hold product names, prices and quantity. This will be used to display the products in the vending machine
+
+        void addProducts()
+        {
+            vendingProducts.Add("Butterfinger", new Product("Butterfinger", 1.50, 20));
+            vendingProducts.Add("Mars", new Product("Mars", 1.40, 20));
+            vendingProducts.Add("Tony's", new Product("Tony's", 1.60, 20));
+            vendingProducts.Add("Coke", new Product("Coke", 1.20, 20));
+        }
 
         double totalPrice = 0.00; // this holds the total price which will be caluclated for all items chosen. this is displayed at end of order
 
@@ -78,8 +97,16 @@ namespace Vending_Machine
         //experiment here with a list of items from tutorial and can use a dictionary to store. 
         private void calculateOrderSummary()
         {
+            orderSummary.Items.Clear();
 
-            // calculate the total price of the items in the listbox1 and display in order summary listbox
+            // getters from product class
+
+            double butterfingerPrice = vendingProducts["Butterfinger"].getPrice();  //uses dictionary example 1
+            double marsPrice = vendingProducts["Mars"].getPrice();
+            double tonysPrice = vendingProducts["Tony's"].getPrice();
+            double cokePrice = vendingProducts["Coke"].getPrice();
+
+            // calculate the total price of the items in the listbox1 using the dictionary and product class
 
             int butterfingerChosen = 0;
             int marsChosen = 0;
@@ -120,8 +147,6 @@ namespace Vending_Machine
 
             // this displays the full order in the order summary list box with amount and price
 
-            orderSummary.Items.Clear(); // this clears the order summary list box beofre new items are added
-
             if (butterfingerChosen > 0)
             {
                 orderSummary.Items.Add("Butterfinger x " + butterfingerChosen + " - " + butterfingerTotal.ToString("£0.00")); //price at 0.00 waiting for calculation of total price for each item
@@ -153,24 +178,23 @@ namespace Vending_Machine
         }
 
 
-
+        // click events for each product
         private void butterfinger_Click(object sender, EventArgs e)
         {
+
+            //add product name to list of products and uses a getter to get price from product class in dictionary          
+            double butterfingerPrice = vendingProducts["Butterfinger"].getPrice(); // gets the butterfinger from vendingProducts dictionary and also uses getprice getter to get the price
 
             listBox1.Items.Add("Butterfinger " + butterfingerPrice.ToString("£0.00")); // Add the butterfinger to the list box and update the total price
             MessageBox.Show("Butterfinger added to your order");  // Confirms user selected the butterfinger 
             totalPrice += butterfingerPrice;  // Updates the total price with the price of the butterfinger using assignment operator
-
-            // group or sort more than one of the same item together and then display this in the list box
-
-            // check stock
-
         }
-
         private void Mars_Click(object sender, EventArgs e)
         {
-            //variable for amount inside vending machine
 
+            double marsPrice = vendingProducts["Mars"].getPrice();
+
+            //variable for amount inside vending machine
             listBox1.Items.Add("Mars " + marsPrice.ToString("£0.00"));
             MessageBox.Show("Mars added to your order");
             totalPrice += marsPrice;
@@ -180,6 +204,8 @@ namespace Vending_Machine
 
         private void Tonys_Click(object sender, EventArgs e)
         {
+            double tonysPrice = vendingProducts["Tony's"].getPrice();
+
             listBox1.Items.Add("Tony's " + tonysPrice.ToString("£0.00"));
             MessageBox.Show("Tony's added to your order");//confirms  user selected Tony's chocolonely
             totalPrice += tonysPrice;
@@ -187,6 +213,8 @@ namespace Vending_Machine
 
         private void Coke_Click(object sender, EventArgs e)
         {
+            double cokePrice = vendingProducts["Coke"].getPrice();
+
             listBox1.Items.Add("Coke " + cokePrice.ToString("£0.00"));
             MessageBox.Show("Coke Selected"); // confirms user selected a can of coke
             totalPrice += cokePrice;
@@ -232,7 +260,6 @@ namespace Vending_Machine
             DisplayTotalPrice(); // after clicking the finish box this displays the total user owes for their items
         }
 
-
         //these are the drag drop functions to allow the insert of money into the machine
         private void twoPound_mouseDown(object sender, MouseEventArgs e)
         {
@@ -247,7 +274,6 @@ namespace Vending_Machine
             onePound.DoDragDrop(onePoundCoin.ToString(), DragDropEffects.Copy);
 
         }
-
         private void fiftyP_mouseDown(object sender, MouseEventArgs e)
         {
 
@@ -308,8 +334,6 @@ namespace Vending_Machine
                 PaymentDisplay(); // displays total paid, amount due and change due using the checkout class getters
 
             }
-
-
         }
 
         private void PaymentDisplay() // this displays coins entered in payment to vending machinecalculates amount due and change using checkout class functions
@@ -331,14 +355,9 @@ namespace Vending_Machine
 
         }
 
-
-
         // drag drop to remove items from list box 1 into a bin. This feature will allow removal of each individual item
 
         // checkout.moneyPaid(totalCoinsInserted, totalPrice); 
-
-
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -384,8 +403,6 @@ namespace Vending_Machine
 
         }
 
-
-
         private void cancelComplete_Click(object sender, EventArgs e)
         {
 
@@ -409,12 +426,12 @@ namespace Vending_Machine
         {
             // extra function for saving order summary to text file to be inserted here
 
-
-
             // this resets the vending machine after the use has collected their items and change
 
             listBox1.Items.Clear();
             orderSummary.Items.Clear();
+            
+            //reset finalamount label
             change.Text = "Change: £0.00";
             finalAmount.Text = "Total Amount: " + totalPrice.ToString("£0.00") + "\nMoney paid: " + moneyPaid.ToString("£0.00") + "\nAmount Remaining: " + totalPrice.ToString("£0.00") + "\nChange Due: " + changeDue.ToString("£0.00");
             label10.Text = "Total Price: " + totalPrice.ToString("£0.00");
@@ -422,8 +439,67 @@ namespace Vending_Machine
 
 
         }
+
+        //extra feature of sentient vending machine called Vendy. uses extra functionality researched
+        private void speakVendy_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hi, I am Vendy, a sentient vending machine.\n\nI store anything from sweet treats to the deepest knowledge of the universe");
+
+            string message = " \nDo you want to play a game with me?";
+
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+
+            DialogResult result = MessageBox.Show(message, "Vendy", buttons);
+
+            if (result == DialogResult.Yes)
+            {
+                MessageBox.Show("Great stuff! Let's play a game of true and false.");
+
+
+                // call vendyGame questions method
+                Sentientvendy.VendyGameQuestions();
+            }
+
+            else
+            {
+                MessageBox.Show("That's okay, maybe next time.");
+            }
+
+
+
+        }
     }
 
+    public class Product //using this class so I can use it in my dictionary for product names, price and quantity
+    {
+       private string name;
+       private double price;
+       private int quantity;
+
+        public Product(string productName, double productPrice, int productQuantity) // this is a constructor for product class
+        {
+            name = productName;
+            price = productPrice;
+            quantity = productQuantity;
+        }
+
+        //getters for product class
+        public string getName()
+        {
+            return name; // this is a pointer to name of product in the dictionary
+        }
+
+        public double getPrice()
+        {
+            return price;
+        }
+
+        public int getQuantity()
+        {
+            return quantity;
+        }
+
+    }
 
     public class Checkout // keeping payment functions separate for security
     {
@@ -483,9 +559,6 @@ namespace Vending_Machine
             //provide a saved text file of each purchase and amount paid
 
         }
-
-
-     
     }
 
     public class Sentientvendy
@@ -495,11 +568,58 @@ namespace Vending_Machine
         //this class will be called when a person clicks the speak to vendy button
         //it will contain more advanced code and experiment with extra c# features; radio buttons, check boxes, list and dictionary
 
+        //create a dictionary to store contacts
+
+        public static void VendyGameQuestions()
+        {
+
+            Dictionary<string, bool> questions = new Dictionary<string, bool>();
+
+            questions.Add("Is quantum mechanics a spooky action at a distance?", true);
+            questions.Add("Can Einstein float?", false);
+            questions.Add("Is the speed of light faster than the speed of sound?", true);
+            questions.Add("Does Isaac Asimov have laws?", true);
+            questions.Add("Is Everett's many worlds interpretation a theory of parallel universes?", true);
+            questions.Add("Is Werner Heisenberg certain about the position and momentum of a particle?", false);
+
+            //score - 1 point for a correct answer, 0 points for it being incorrect
+
+            int questionScore = 0;
+
+            //display the dictionary contents
+
+            //foreach (KeyValuePair<string, bool> question in questions)
+            //{
+            //    //ask a question
+            //    DialogResult answer = MessageBox.Show(question.Key, "Vendy asks, true or false?", MessageBoxButtons.YesNo);
+
+            //    // check answer
+
+            //    if ((answer == DialogResult.Yes && question.Value == true) || (answer == DialogResult.No && question.Value == false))
+            //    {
+            //        MessageBox.Show("Correct! Vendy is impressed. Well done!");
+            //        questionScore++;
+            //    }
+
+
+            //    // this is the Tkey and Tvalue of the dictionary
+            //    MessageBox.Show("Question: " + question.Key + ", Answer: " + question.Value);
+            
+        }
+
+        public static void VendyHappy() //vendy gets creepy and starts insist the player gives their contact details so they can play from home
+        {
+
+       
+
+        }
+
+        public static void VendyAngry() //vendy gets creepy and starts insist the player gives their contact details so they can play from home
+        {
 
 
 
-
-
+        }
 
 
     }

@@ -300,6 +300,7 @@
             speakVendy.TabIndex = 22;
             speakVendy.Text = "Speak With Vendy...";
             speakVendy.UseVisualStyleBackColor = true;
+            speakVendy.Click += speakVendy_Click;
             // 
             // confirmItems
             // 
