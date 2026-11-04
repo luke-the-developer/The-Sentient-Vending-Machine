@@ -17,6 +17,7 @@
 //14. Add a class, dictionary and list for the extra Vendy feature. Make a game or feature where user can win a prize or get a random product. Incorporate radio buttons and other controls I have not used so far
 //15. Add a useful label displaying most recent action of the user
 // this could be for answering questions or making choices. Could add a hacking feature of the vending machine, such as a number code guess for assembly and opcode manipulation
+// add two new items to the vending machine products
 
 //EXTRA. extra create a chat option - sentience feature (if user just wants a chat). also can build in logic to choose products
 //this could be a rand operator - nested inf statements on a loop. a random product selector implying the machine is sentient
@@ -28,7 +29,8 @@
 // 3. add the prizes and show this on the design [COMPLETE]
 // 4. finish  extra functions on a win or lose and play again. 
 //5. add radio buttons or checkboxes to the different parts of the vendy prizes so user can choose a mystery prize from good or bad pile pending on their score [COMPLETE]
-// 6. work out furtehr user input for details such as email address or phone number
+// 6. work out furtehr user input for details such as email address or phone number. Write code to collect this.
+// 7. add a function to save the user input to a text file for vendy to collect
 
 using System.Collections.Specialized;
 using System.Numerics;
@@ -187,7 +189,6 @@ namespace Vending_Machine
             double butterfingerPrice = vendingProducts["Butterfinger"].getPrice(); // gets the butterfinger from vendingProducts dictionary and also uses getprice getter to get the price
 
             listBox1.Items.Add("Butterfinger " + butterfingerPrice.ToString("£0.00")); // Add the butterfinger to the list box and update the total price
-            MessageBox.Show("Butterfinger added to your order");  // Confirms user selected the butterfinger 
             totalPrice += butterfingerPrice;  // Updates the total price with the price of the butterfinger using assignment operator
         }
         private void Mars_Click(object sender, EventArgs e)
@@ -197,7 +198,6 @@ namespace Vending_Machine
 
             //variable for amount inside vending machine
             listBox1.Items.Add("Mars " + marsPrice.ToString("£0.00"));
-            MessageBox.Show("Mars added to your order");
             totalPrice += marsPrice;
 
             // group more than one of the same item together and then display this in the list box
@@ -207,8 +207,7 @@ namespace Vending_Machine
         {
             double tonysPrice = vendingProducts["Tony's"].getPrice();
 
-            listBox1.Items.Add("Tony's " + tonysPrice.ToString("£0.00"));
-            MessageBox.Show("Tony's added to your order");//confirms  user selected Tony's chocolonely
+            listBox1.Items.Add("Tony's " + tonysPrice.ToString("£0.00"));      
             totalPrice += tonysPrice;
         }
 
@@ -217,7 +216,6 @@ namespace Vending_Machine
             double cokePrice = vendingProducts["Coke"].getPrice();
 
             listBox1.Items.Add("Coke " + cokePrice.ToString("£0.00"));
-            MessageBox.Show("Coke Selected"); // confirms user selected a can of coke
             totalPrice += cokePrice;
 
         }
@@ -432,9 +430,7 @@ namespace Vending_Machine
             listBox1.Items.Clear();
             orderSummary.Items.Clear();
 
-            MessageBox.Show("Thank you for your purchase. Please collect your items and change. \n\n Vendy is available if you want to play a game or have a chat. \n\n Just press 'speak to vendy' : ) \n\n you won't regret it!)");
-
-
+            MessageBox.Show("Thank you for your purchase. Please collect your items and change. \n\n Vendy is available if you want to play a game or have a chat. \n\n Just press 'speak to vendy' : ) \n\n you won't regret it!");
 
             vendyBox.Enabled = true; // this enables the speak to vendy button so user can click it again
             speakVendy.Enabled = true; // this enables the speak to vendy button so user can click it again
@@ -473,7 +469,7 @@ namespace Vending_Machine
                 // work out score
 
                 //display the player score and give instructions on claiming prizes
-                MessageBox.Show("If you scored 7 or more you can claim a prize from Vendy \n\n  between 5 and 7 a consolation prize \n\n 1 to 5 you will need to play again");
+                MessageBox.Show("If you scored 7 or more you can claim a special prize from Vendy by pressing the blue button \n\n If between 5 and 7 a consolation prize by pressing the red button \n\n 1 to 5 you will need to play again");
                 MessageBox.Show("Scores on the doors! \n\n You scored: " + vendy.getQuestionScore());
 
                 if (vendy.getQuestionScore() >= 7)
@@ -486,7 +482,7 @@ namespace Vending_Machine
                     //red collect prizes button is enabled
 
                     collectBoobyPrize.Enabled = true; // enables booby prize collect button
-
+                    collectPrize.Enabled = false; // disables prize collect button
 
                 }
                 else
@@ -516,8 +512,9 @@ namespace Vending_Machine
             if (collectPurchase.Enabled == true)
             {
                 collectPrize.Enabled = false;
-                playAgain.Enabled = true;
-                exitGame.Enabled = true;
+                collectBoobyPrize.Enabled = false;
+                playAgain.Enabled = false;
+                exitGame.Enabled = false;
                 mysteryPrize1.Enabled = false;
                 mysteryPrize2.Enabled = false;
                 mysteryPrize3.Enabled = false;
@@ -534,7 +531,7 @@ namespace Vending_Machine
 
             if (mysteryPrize1.Checked)
             {
-                MessageBox.Show("You have selected mystery prize 1. Vendy will send this to your address");
+                MessageBox.Show("You have selected mystery prize 1. \n\n This is a night at the Ritz Hotel for 2! \n\n Vendy will send the booking to your email");
 
                 mysteryPrize2.Enabled = false;
                 mysteryPrize3.Enabled = false;
@@ -546,7 +543,7 @@ namespace Vending_Machine
         {
             if (mysteryPrize2.Checked)
             {
-                MessageBox.Show("You have selected mystery prize 2. Vendy will send this to your address");
+                MessageBox.Show("You have selected mystery prize 2.\n\n Tickets for Defcon in Las vegas!! Well done \n\n Vendy will send these to your email");
 
                 mysteryPrize1.Enabled = false;
                 mysteryPrize3.Enabled = false;
@@ -558,26 +555,39 @@ namespace Vending_Machine
         {
             if (mysteryPrize3.Checked)
             {
-                MessageBox.Show("You have selected mystery prize 3. Vendy will send this to your address");
+                MessageBox.Show("You have selected mystery prize 3.\n\n An autonomous mini cooper!\n\n Vendy will send this to your address");
                 mysteryPrize1.Enabled = false;
                 mysteryPrize2.Enabled = false;
             }
-
         }
 
         private void boobyPrize1_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (boobyPrize1.Checked)
+            {
+                MessageBox.Show("You have selected this prize.\n\n This is a long weight \n\n Vendy will send it to your address");
+                boobyPrize2.Enabled = false;
+                boobyPrize3.Enabled = false;
+            }
         }
 
         private void boobyPrize2_CheckedChanged(object sender, EventArgs e)
         {
 
+            if (boobyPrize2.Checked)
+            {
+                MessageBox.Show("You have selected this prize.\n\n Tartan paint \n\n Vendy will send it to your address");
+                boobyPrize1.Enabled = false;
+                boobyPrize3.Enabled = false;
+            }
         }
 
         private void boobyPrize3_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (boobyPrize3.Checked)
+            {
+                MessageBox.Show("You have selected this prize. \n\n A left handed screwdriver \n\n Vendy will send it to you");
+            }
         }
 
         private void collectPrize_Click(object sender, EventArgs e)
