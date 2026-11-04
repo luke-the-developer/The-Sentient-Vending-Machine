@@ -23,12 +23,12 @@
 //could have a built in game function - sentient vending machine asks if you wanna play a game - can win prizes
 
 // Vendy To Do List
-// 1. clean up dictionary and list
-// 2. imporve the game with more questions and a score
-// 3. add the prizes and show this on the design 
+// 1. clean up dictionary and list [COMPLETE]
+// 2. imporve the game with more questions and a score [COMPLETE]
+// 3. add the prizes and show this on the design [COMPLETE]
 // 4. finish  extra functions on a win or lose and play again. 
-//5. add radio buttons or checkboxes to the different parts of the vendy prizes so user can choose a mystery prize from good or bad pile pending on their score
-
+//5. add radio buttons or checkboxes to the different parts of the vendy prizes so user can choose a mystery prize from good or bad pile pending on their score [COMPLETE]
+// 6. work out furtehr user input for details such as email address or phone number
 
 using System.Collections.Specialized;
 using System.Numerics;
@@ -41,8 +41,8 @@ namespace Vending_Machine
     {
 
         Checkout checkout = new Checkout(); // I will use this to call separate functions built in the checkout class to calculate the amount due, money paid and change
-        
-        Sentientvendy sentient = new Sentientvendy(); //vendy extra feature
+
+        Sentientvendy vendy = new Sentientvendy(); //vendy extra feature
 
         Dictionary<string, Product> vendingProducts = new Dictionary<string, Product>();
 
@@ -69,6 +69,7 @@ namespace Vending_Machine
             paymentBox.AllowDrop = true;
             paymentZone.Enabled = false;
             cancelComplete.Enabled = false;
+            vendyBox.Enabled = false;
 
             addProducts(); //function to add products to dictionary for vending machine
 
@@ -430,7 +431,15 @@ namespace Vending_Machine
 
             listBox1.Items.Clear();
             orderSummary.Items.Clear();
-            
+
+            MessageBox.Show("Thank you for your purchase. Please collect your items and change. \n\n Vendy is available if you want to play a game or have a chat. \n\n Just press 'speak to vendy' : ) \n\n you won't regret it!)");
+
+
+
+            vendyBox.Enabled = true; // this enables the speak to vendy button so user can click it again
+            speakVendy.Enabled = true; // this enables the speak to vendy button so user can click it again
+            disableVendyPrizeZone(); // this disables the prize zone so user can only click it once
+
             //reset finalamount label
             change.Text = "Change: £0.00";
             finalAmount.Text = "Total Amount: " + totalPrice.ToString("£0.00") + "\nMoney paid: " + moneyPaid.ToString("£0.00") + "\nAmount Remaining: " + totalPrice.ToString("£0.00") + "\nChange Due: " + changeDue.ToString("£0.00");
@@ -438,11 +447,13 @@ namespace Vending_Machine
             totalPrice = 0.00;
 
 
+
         }
 
         //extra feature of sentient vending machine called Vendy. uses extra functionality researched
         private void speakVendy_Click(object sender, EventArgs e)
         {
+
             MessageBox.Show("Hi, I am Vendy, a sentient vending machine.\n\nI store anything from sweet treats to the deepest knowledge of the universe");
 
             string message = " \nDo you want to play a game with me?";
@@ -457,7 +468,38 @@ namespace Vending_Machine
 
 
                 // call vendyGame questions method
-                Sentientvendy.VendyGameQuestions();
+                vendy.VendyGameQuestions();
+
+                // work out score
+
+                //display the player score and give instructions on claiming prizes
+                MessageBox.Show("If you scored 7 or more you can claim a prize from Vendy \n\n  between 5 and 7 a consolation prize \n\n 1 to 5 you will need to play again");
+                MessageBox.Show("Scores on the doors! \n\n You scored: " + vendy.getQuestionScore());
+
+                if (vendy.getQuestionScore() >= 7)
+                {
+                    collectPrize.Enabled = true; // enables prize collect button
+
+                }
+                else if (vendy.getQuestionScore() >= 5 && vendy.getQuestionScore() < 7)
+                {
+                    //red collect prizes button is enabled
+
+                    collectBoobyPrize.Enabled = true; // enables booby prize collect button
+
+
+                }
+                else
+                {
+
+                    MessageBox.Show("Vendy strongly suggests you play again to win a prize. \n Press Speak to Vendy to have another go");
+
+
+
+                }
+
+
+
             }
 
             else
@@ -465,7 +507,109 @@ namespace Vending_Machine
                 MessageBox.Show("That's okay, maybe next time.");
             }
 
+        }
 
+        private void disableVendyPrizeZone()
+        {
+            //this controls the enable and disabling of Vendy prize zone 
+
+            if (collectPurchase.Enabled == true)
+            {
+                collectPrize.Enabled = false;
+                playAgain.Enabled = true;
+                exitGame.Enabled = true;
+                mysteryPrize1.Enabled = false;
+                mysteryPrize2.Enabled = false;
+                mysteryPrize3.Enabled = false;
+                boobyPrize1.Enabled = false;
+                boobyPrize2.Enabled = false;
+                boobyPrize3.Enabled = false;
+            }
+
+        }
+
+        private void mysteryPrize1_CheckedChanged(object sender, EventArgs e)
+        {
+
+
+            if (mysteryPrize1.Checked)
+            {
+                MessageBox.Show("You have selected mystery prize 1. Vendy will send this to your address");
+
+                mysteryPrize2.Enabled = false;
+                mysteryPrize3.Enabled = false;
+            }
+
+        }
+
+        private void mysteryPrize2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (mysteryPrize2.Checked)
+            {
+                MessageBox.Show("You have selected mystery prize 2. Vendy will send this to your address");
+
+                mysteryPrize1.Enabled = false;
+                mysteryPrize3.Enabled = false;
+            }
+
+        }
+
+        private void mysteryPrize3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (mysteryPrize3.Checked)
+            {
+                MessageBox.Show("You have selected mystery prize 3. Vendy will send this to your address");
+                mysteryPrize1.Enabled = false;
+                mysteryPrize2.Enabled = false;
+            }
+
+        }
+
+        private void boobyPrize1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void boobyPrize2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void boobyPrize3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void collectPrize_Click(object sender, EventArgs e)
+        {
+            // this enables the user to select a prize 
+
+            MessageBox.Show("Choose one prize from the list and Vnedy will make sure it arrives");
+            mysteryPrize1.Enabled = true;
+            mysteryPrize2.Enabled = true;
+            mysteryPrize3.Enabled = true;
+
+        }
+
+        private void playAgain_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitGame_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void collectBoobyPrize_Click(object sender, EventArgs e)
+        {
+
+            // this allows user to select a booby prize
+
+            MessageBox.Show("Choose one prize from the list quickly and play again");
+            boobyPrize1.Enabled = true;
+            boobyPrize2.Enabled = true;
+            boobyPrize3.Enabled = true;
 
         }
     }
@@ -555,67 +699,91 @@ namespace Vending_Machine
             //this function is called to deduct the stock of items in vending machine and sends a notification to owner when stock is low
 
 
-
-            //provide a saved text file of each purchase and amount paid
-
         }
     }
 
     public class Sentientvendy
     {
 
-        //this is the vendy class - it will contain a dictionary of products, a game and a prize.
-        //this class will be called when a person clicks the speak to vendy button
-        //it will contain more advanced code and experiment with extra c# features; radio buttons, check boxes, list and dictionary
+        //
+        private int questionScore = 0;
+        private double totalScore = 0.0;
 
-        //create a dictionary to store contacts
+        public int getQuestionScore() //this is a getter so i can access question score from main form
+        {
+            return questionScore;
+        }
 
-        public static void VendyGameQuestions()
+        public void VendyGameQuestions()
         {
 
             Dictionary<string, bool> questions = new Dictionary<string, bool>();
 
-            questions.Add("Is quantum mechanics a spooky action at a distance?", true);
-            questions.Add("Can Einstein float?", false);
-            questions.Add("Is the speed of light faster than the speed of sound?", true);
+            questions.Add("Is quantum mechanics a spooky action at a distance?\n\n", true);
+            questions.Add("Can Einstein float?\n\n", false);
+            questions.Add("Is the speed of light faster than the speed of sound?\n\n", true);
             questions.Add("Does Isaac Asimov have laws?", true);
-            questions.Add("Is Everett's many worlds interpretation a theory of parallel universes?", true);
-            questions.Add("Is Werner Heisenberg certain about the position and momentum of a particle?", false);
+            questions.Add("Is Everett's many worlds interpretation a theory of parallel universes?\n\n", true);
+            questions.Add("Is Werner Heisenberg certain about the position and momentum of a particle?\n\n", false);
+            questions.Add("Is the Schrödinger equation a fundamental equation of quantum mechanics?\n\n", true);
+            questions.Add("Is the Copenhagen interpretation a theory of quantum mechanics?\n\n", true);
+            questions.Add("If a cat is in a box, is it both alive and dead at the same time?\n\n", true);
+            questions.Add("Can neural networks offer sentience to a vending machine?\n\n", true);
 
-            //score - 1 point for a correct answer, 0 points for it being incorrect
+            // score 1 point for a correct answer, 0 points for it being incorrect
 
-            int questionScore = 0;
+           
 
-            //display the dictionary contents
+            //   display the dictionary contents
 
-            //foreach (KeyValuePair<string, bool> question in questions)
-            //{
-            //    //ask a question
-            //    DialogResult answer = MessageBox.Show(question.Key, "Vendy asks, true or false?", MessageBoxButtons.YesNo);
+            foreach (var question in questions)
+            {
 
-            //    // check answer
+                //ask a question
+                DialogResult answer = MessageBox.Show(question.Key, "Vendy asks, true or false?", MessageBoxButtons.YesNo);
 
-            //    if ((answer == DialogResult.Yes && question.Value == true) || (answer == DialogResult.No && question.Value == false))
-            //    {
-            //        MessageBox.Show("Correct! Vendy is impressed. Well done!");
-            //        questionScore++;
-            //    }
+                // check answer
 
+                if ((answer == DialogResult.Yes && question.Value == true) || (answer == DialogResult.No && question.Value == false))
+                {
+                    MessageBox.Show("Correct! Vendy is impressed. Well done!");
+                    questionScore++;
+                }
 
-            //    // this is the Tkey and Tvalue of the dictionary
-            //    MessageBox.Show("Question: " + question.Key + ", Answer: " + question.Value);
-            
+                else
+                {
+                    MessageBox.Show("Incorrect! Vendy is disappointed. Better luck next time.");
+                }
+            }
+          
+      
         }
 
         public static void VendyHappy() //vendy gets creepy and starts insist the player gives their contact details so they can play from home
         {
+            // this function is the best prize and allows user select a list of prizes
 
-       
+            MessageBox.Show("Bravo! Clap clap, you have won a prize from Vendy! \n\n Select a prize from the list below and Vendy will send it to your address");
+
+
+
+            
+
+
+        }
+
+        public static void HelpfulVendy()
+        {
+            //user gets a consolation prize, vendy encourages to play again
 
         }
 
         public static void VendyAngry() //vendy gets creepy and starts insist the player gives their contact details so they can play from home
         {
+
+            // play again - button pressed to play again and reset the game or person tries to leave the game
+
+
 
 
 

@@ -123,6 +123,16 @@ namespace Vending_Machine.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _360_F_1699448928_KiG1fyIYF7P76nJd9dmbEhRScKsBUc1C {
+            get {
+                object obj = ResourceManager.GetObject("360_F_1699448928_KiG1fyIYF7P76nJd9dmbEhRScKsBUc1C", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _50P {
             get {
                 object obj = ResourceManager.GetObject("50P", resourceCulture);
@@ -156,6 +166,16 @@ namespace Vending_Machine.Properties {
         internal static System.Drawing.Bitmap Coke {
             get {
                 object obj = ResourceManager.GetObject("Coke", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IMG_7975 {
+            get {
+                object obj = ResourceManager.GetObject("IMG_7975", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

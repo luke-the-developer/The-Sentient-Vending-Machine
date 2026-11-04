@@ -69,8 +69,25 @@
             collectPurchase = new Button();
             orderZone = new GroupBox();
             cancelComplete = new Button();
-            textBox1 = new TextBox();
             vendyBox = new GroupBox();
+            label11 = new Label();
+            textBox1 = new TextBox();
+            collectBoobyPrize = new Button();
+            collectPrize = new Button();
+            pictureBox11 = new PictureBox();
+            pictureBox10 = new PictureBox();
+            pictureBox9 = new PictureBox();
+            pictureBox8 = new PictureBox();
+            pictureBox7 = new PictureBox();
+            pictureBox6 = new PictureBox();
+            boobyPrize3 = new CheckBox();
+            boobyPrize2 = new CheckBox();
+            boobyPrize1 = new CheckBox();
+            exitGame = new Button();
+            playAgain = new Button();
+            mysteryPrize3 = new CheckBox();
+            mysteryPrize2 = new CheckBox();
+            mysteryPrize1 = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -88,6 +105,12 @@
             paymentZone.SuspendLayout();
             orderZone.SuspendLayout();
             vendyBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             SuspendLayout();
             // 
             // listBox1
@@ -154,7 +177,7 @@
             // 
             label3.Font = new Font("Goudy Stout", 28F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Purple;
-            label3.Location = new Point(261, 9);
+            label3.Location = new Point(421, 9);
             label3.Name = "label3";
             label3.Size = new Size(687, 80);
             label3.TabIndex = 7;
@@ -223,9 +246,9 @@
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(68, 45);
+            pictureBox4.Location = new Point(129, 30);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(233, 227);
+            pictureBox4.Size = new Size(291, 258);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 14;
             pictureBox4.TabStop = false;
@@ -294,9 +317,10 @@
             // speakVendy
             // 
             speakVendy.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            speakVendy.Location = new Point(68, 278);
+            speakVendy.ForeColor = Color.FromArgb(64, 0, 64);
+            speakVendy.Location = new Point(129, 294);
             speakVendy.Name = "speakVendy";
-            speakVendy.Size = new Size(233, 71);
+            speakVendy.Size = new Size(291, 71);
             speakVendy.TabIndex = 22;
             speakVendy.Text = "Speak With Vendy...";
             speakVendy.UseVisualStyleBackColor = true;
@@ -517,7 +541,7 @@
             orderZone.Controls.Add(listBox1);
             orderZone.Location = new Point(12, 116);
             orderZone.Name = "orderZone";
-            orderZone.Size = new Size(917, 900);
+            orderZone.Size = new Size(917, 964);
             orderZone.TabIndex = 40;
             orderZone.TabStop = false;
             orderZone.Text = "Order Zone";
@@ -533,30 +557,242 @@
             cancelComplete.UseVisualStyleBackColor = true;
             cancelComplete.Click += cancelComplete_Click;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(46, 369);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(287, 31);
-            textBox1.TabIndex = 41;
-            // 
             // vendyBox
             // 
+            vendyBox.Controls.Add(label11);
             vendyBox.Controls.Add(textBox1);
+            vendyBox.Controls.Add(collectBoobyPrize);
+            vendyBox.Controls.Add(collectPrize);
+            vendyBox.Controls.Add(pictureBox11);
+            vendyBox.Controls.Add(pictureBox10);
+            vendyBox.Controls.Add(pictureBox9);
+            vendyBox.Controls.Add(pictureBox8);
+            vendyBox.Controls.Add(pictureBox7);
+            vendyBox.Controls.Add(pictureBox6);
+            vendyBox.Controls.Add(boobyPrize3);
+            vendyBox.Controls.Add(boobyPrize2);
+            vendyBox.Controls.Add(boobyPrize1);
+            vendyBox.Controls.Add(exitGame);
+            vendyBox.Controls.Add(playAgain);
+            vendyBox.Controls.Add(mysteryPrize3);
+            vendyBox.Controls.Add(mysteryPrize2);
+            vendyBox.Controls.Add(mysteryPrize1);
             vendyBox.Controls.Add(pictureBox4);
             vendyBox.Controls.Add(speakVendy);
             vendyBox.Location = new Point(961, 128);
             vendyBox.Name = "vendyBox";
-            vendyBox.Size = new Size(362, 888);
+            vendyBox.Size = new Size(564, 952);
             vendyBox.TabIndex = 42;
             vendyBox.TabStop = false;
             vendyBox.Text = "Vendy";
+            // 
+            // label11
+            // 
+            label11.Location = new Point(37, 832);
+            label11.Name = "label11";
+            label11.Size = new Size(106, 45);
+            label11.TabIndex = 59;
+            label11.Text = "Enter Email:";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(154, 832);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(404, 31);
+            textBox1.TabIndex = 58;
+            // 
+            // collectBoobyPrize
+            // 
+            collectBoobyPrize.BackColor = Color.Crimson;
+            collectBoobyPrize.ForeColor = Color.Yellow;
+            collectBoobyPrize.Location = new Point(205, 595);
+            collectBoobyPrize.Name = "collectBoobyPrize";
+            collectBoobyPrize.Size = new Size(157, 38);
+            collectBoobyPrize.TabIndex = 57;
+            collectBoobyPrize.Text = "Collect Prize";
+            collectBoobyPrize.UseVisualStyleBackColor = false;
+            collectBoobyPrize.Click += collectBoobyPrize_Click;
+            // 
+            // collectPrize
+            // 
+            collectPrize.BackColor = Color.SlateBlue;
+            collectPrize.ForeColor = Color.Yellow;
+            collectPrize.Location = new Point(205, 390);
+            collectPrize.Name = "collectPrize";
+            collectPrize.Size = new Size(157, 38);
+            collectPrize.TabIndex = 56;
+            collectPrize.Text = "Collect Prize";
+            collectPrize.UseVisualStyleBackColor = false;
+            collectPrize.Click += collectPrize_Click;
+            // 
+            // pictureBox11
+            // 
+            pictureBox11.Image = Properties.Resources._360_F_1699448928_KiG1fyIYF7P76nJd9dmbEhRScKsBUc1C;
+            pictureBox11.Location = new Point(390, 658);
+            pictureBox11.Name = "pictureBox11";
+            pictureBox11.Size = new Size(144, 119);
+            pictureBox11.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox11.TabIndex = 55;
+            pictureBox11.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            pictureBox10.Image = Properties.Resources._360_F_1699448928_KiG1fyIYF7P76nJd9dmbEhRScKsBUc1C;
+            pictureBox10.Location = new Point(205, 654);
+            pictureBox10.Name = "pictureBox10";
+            pictureBox10.Size = new Size(144, 119);
+            pictureBox10.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox10.TabIndex = 54;
+            pictureBox10.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            pictureBox9.Image = Properties.Resources._360_F_1699448928_KiG1fyIYF7P76nJd9dmbEhRScKsBUc1C;
+            pictureBox9.Location = new Point(28, 654);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(144, 119);
+            pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox9.TabIndex = 53;
+            pictureBox9.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            pictureBox8.Image = Properties.Resources.IMG_7975;
+            pictureBox8.Location = new Point(410, 449);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(96, 89);
+            pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox8.TabIndex = 52;
+            pictureBox8.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            pictureBox7.Image = Properties.Resources.IMG_7975;
+            pictureBox7.Location = new Point(234, 449);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(96, 89);
+            pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox7.TabIndex = 51;
+            pictureBox7.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Image = Properties.Resources.IMG_7975;
+            pictureBox6.Location = new Point(51, 449);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(96, 89);
+            pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox6.TabIndex = 50;
+            pictureBox6.TabStop = false;
+            // 
+            // boobyPrize3
+            // 
+            boobyPrize3.AutoSize = true;
+            boobyPrize3.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            boobyPrize3.ForeColor = Color.Crimson;
+            boobyPrize3.Location = new Point(371, 779);
+            boobyPrize3.Name = "boobyPrize3";
+            boobyPrize3.Size = new Size(163, 28);
+            boobyPrize3.TabIndex = 49;
+            boobyPrize3.Text = "Mystery Prize";
+            boobyPrize3.UseVisualStyleBackColor = true;
+            boobyPrize3.CheckedChanged += boobyPrize3_CheckedChanged;
+            // 
+            // boobyPrize2
+            // 
+            boobyPrize2.AutoSize = true;
+            boobyPrize2.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            boobyPrize2.ForeColor = Color.Crimson;
+            boobyPrize2.Location = new Point(195, 779);
+            boobyPrize2.Name = "boobyPrize2";
+            boobyPrize2.Size = new Size(163, 28);
+            boobyPrize2.TabIndex = 48;
+            boobyPrize2.Text = "Mystery Prize";
+            boobyPrize2.UseVisualStyleBackColor = true;
+            boobyPrize2.CheckedChanged += boobyPrize2_CheckedChanged;
+            // 
+            // boobyPrize1
+            // 
+            boobyPrize1.AutoSize = true;
+            boobyPrize1.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            boobyPrize1.ForeColor = Color.Crimson;
+            boobyPrize1.Location = new Point(9, 779);
+            boobyPrize1.Name = "boobyPrize1";
+            boobyPrize1.Size = new Size(163, 28);
+            boobyPrize1.TabIndex = 47;
+            boobyPrize1.Text = "Mystery Prize";
+            boobyPrize1.UseVisualStyleBackColor = true;
+            boobyPrize1.CheckedChanged += boobyPrize1_CheckedChanged;
+            // 
+            // exitGame
+            // 
+            exitGame.BackColor = Color.SlateBlue;
+            exitGame.ForeColor = Color.Yellow;
+            exitGame.Location = new Point(348, 883);
+            exitGame.Name = "exitGame";
+            exitGame.Size = new Size(112, 34);
+            exitGame.TabIndex = 46;
+            exitGame.Text = "Leave";
+            exitGame.UseVisualStyleBackColor = false;
+            exitGame.Click += exitGame_Click;
+            // 
+            // playAgain
+            // 
+            playAgain.BackColor = Color.SlateBlue;
+            playAgain.ForeColor = Color.Yellow;
+            playAgain.Location = new Point(131, 883);
+            playAgain.Name = "playAgain";
+            playAgain.Size = new Size(112, 34);
+            playAgain.TabIndex = 45;
+            playAgain.Text = "Play Again";
+            playAgain.UseVisualStyleBackColor = false;
+            playAgain.Click += playAgain_Click;
+            // 
+            // mysteryPrize3
+            // 
+            mysteryPrize3.AutoSize = true;
+            mysteryPrize3.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            mysteryPrize3.ForeColor = Color.Purple;
+            mysteryPrize3.Location = new Point(375, 547);
+            mysteryPrize3.Name = "mysteryPrize3";
+            mysteryPrize3.Size = new Size(163, 28);
+            mysteryPrize3.TabIndex = 44;
+            mysteryPrize3.Text = "Mystery Prize";
+            mysteryPrize3.UseVisualStyleBackColor = true;
+            mysteryPrize3.CheckedChanged += mysteryPrize3_CheckedChanged;
+            // 
+            // mysteryPrize2
+            // 
+            mysteryPrize2.AutoSize = true;
+            mysteryPrize2.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            mysteryPrize2.ForeColor = Color.Purple;
+            mysteryPrize2.Location = new Point(199, 547);
+            mysteryPrize2.Name = "mysteryPrize2";
+            mysteryPrize2.Size = new Size(163, 28);
+            mysteryPrize2.TabIndex = 43;
+            mysteryPrize2.Text = "Mystery Prize";
+            mysteryPrize2.UseVisualStyleBackColor = true;
+            mysteryPrize2.CheckedChanged += mysteryPrize2_CheckedChanged;
+            // 
+            // mysteryPrize1
+            // 
+            mysteryPrize1.AutoSize = true;
+            mysteryPrize1.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            mysteryPrize1.ForeColor = Color.Purple;
+            mysteryPrize1.Location = new Point(13, 547);
+            mysteryPrize1.Name = "mysteryPrize1";
+            mysteryPrize1.Size = new Size(163, 28);
+            mysteryPrize1.TabIndex = 42;
+            mysteryPrize1.Text = "Mystery Prize";
+            mysteryPrize1.UseVisualStyleBackColor = true;
+            mysteryPrize1.CheckedChanged += mysteryPrize1_CheckedChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1346, 1570);
+            BackColor = Color.Thistle;
+            ClientSize = new Size(1537, 1570);
             Controls.Add(vendyBox);
             Controls.Add(orderZone);
             Controls.Add(paymentZone);
@@ -583,6 +819,12 @@
             orderZone.PerformLayout();
             vendyBox.ResumeLayout(false);
             vendyBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ResumeLayout(false);
         }
 
@@ -627,8 +869,25 @@
         private GroupBox paymentZone;
         private GroupBox orderZone;
         private Button cancelComplete;
-        private TextBox textBox1;
         private GroupBox vendyBox;
         private Button collectPurchase;
+        private CheckBox mysteryPrize3;
+        private CheckBox mysteryPrize2;
+        private CheckBox mysteryPrize1;
+        private Button exitGame;
+        private Button playAgain;
+        private CheckBox boobyPrize3;
+        private CheckBox boobyPrize2;
+        private CheckBox boobyPrize1;
+        private PictureBox pictureBox6;
+        private PictureBox pictureBox8;
+        private PictureBox pictureBox7;
+        private PictureBox pictureBox11;
+        private PictureBox pictureBox10;
+        private PictureBox pictureBox9;
+        private Button collectPrize;
+        private Button collectBoobyPrize;
+        private TextBox textBox1;
+        private Label label11;
     }
 }
