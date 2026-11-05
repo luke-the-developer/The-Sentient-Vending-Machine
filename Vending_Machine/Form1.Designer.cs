@@ -68,6 +68,7 @@
             paymentZone = new GroupBox();
             collectPurchase = new Button();
             orderZone = new GroupBox();
+            rubbishBin = new PictureBox();
             cancelComplete = new Button();
             vendyBox = new GroupBox();
             label15 = new Label();
@@ -115,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)paymentBox).BeginInit();
             paymentZone.SuspendLayout();
             orderZone.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)rubbishBin).BeginInit();
             vendyBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).BeginInit();
@@ -133,6 +135,7 @@
             listBox1.Size = new Size(340, 279);
             listBox1.TabIndex = 0;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            listBox1.MouseDown += listBox1_MouseDown;
             // 
             // pictureBox1
             // 
@@ -257,7 +260,7 @@
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(138, 30);
+            pictureBox4.Location = new Point(123, 23);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(291, 258);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -278,9 +281,9 @@
             // pictureBox5
             // 
             pictureBox5.Image = Properties.Resources.Coke;
-            pictureBox5.Location = new Point(222, 402);
+            pictureBox5.Location = new Point(43, 199);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(86, 116);
+            pictureBox5.Size = new Size(51, 62);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox5.TabIndex = 17;
             pictureBox5.TabStop = false;
@@ -289,7 +292,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(237, 527);
+            label8.Location = new Point(43, 271);
             label8.Name = "label8";
             label8.Size = new Size(57, 23);
             label8.TabIndex = 18;
@@ -298,7 +301,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(238, 562);
+            label9.Location = new Point(47, 300);
             label9.Name = "label9";
             label9.Size = new Size(56, 25);
             label9.TabIndex = 19;
@@ -307,7 +310,7 @@
             // Coke
             // 
             Coke.Font = new Font("Showcard Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Coke.Location = new Point(195, 590);
+            Coke.Location = new Point(6, 328);
             Coke.Name = "Coke";
             Coke.Size = new Size(142, 34);
             Coke.TabIndex = 20;
@@ -329,7 +332,7 @@
             // 
             speakVendy.Font = new Font("Showcard Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             speakVendy.ForeColor = Color.FromArgb(64, 0, 64);
-            speakVendy.Location = new Point(138, 294);
+            speakVendy.Location = new Point(123, 283);
             speakVendy.Name = "speakVendy";
             speakVendy.Size = new Size(291, 71);
             speakVendy.TabIndex = 22;
@@ -507,9 +510,9 @@
             paymentZone.Controls.Add(tenP);
             paymentZone.Controls.Add(twoP);
             paymentZone.Controls.Add(fiveP);
-            paymentZone.Location = new Point(12, 1127);
+            paymentZone.Location = new Point(12, 1112);
             paymentZone.Name = "paymentZone";
-            paymentZone.Size = new Size(930, 422);
+            paymentZone.Size = new Size(930, 437);
             paymentZone.TabIndex = 39;
             paymentZone.TabStop = false;
             paymentZone.Text = "Payment Zone";
@@ -527,6 +530,7 @@
             // 
             // orderZone
             // 
+            orderZone.Controls.Add(rubbishBin);
             orderZone.Controls.Add(cancelComplete);
             orderZone.Controls.Add(cancelAll);
             orderZone.Controls.Add(label10);
@@ -557,6 +561,18 @@
             orderZone.TabStop = false;
             orderZone.Text = "Order Zone";
             orderZone.Enter += orderZone_Enter;
+            // 
+            // rubbishBin
+            // 
+            rubbishBin.Image = Properties.Resources.images__2_;
+            rubbishBin.Location = new Point(15, 479);
+            rubbishBin.Name = "rubbishBin";
+            rubbishBin.Size = new Size(263, 253);
+            rubbishBin.SizeMode = PictureBoxSizeMode.StretchImage;
+            rubbishBin.TabIndex = 29;
+            rubbishBin.TabStop = false;
+            rubbishBin.DragDrop += rubbishBin_DragDrop;
+            rubbishBin.DragEnter += rubbishBin_DragEnter;
             // 
             // cancelComplete
             // 
@@ -603,14 +619,14 @@
             vendyBox.Controls.Add(speakVendy);
             vendyBox.Location = new Point(948, 116);
             vendyBox.Name = "vendyBox";
-            vendyBox.Size = new Size(587, 1433);
+            vendyBox.Size = new Size(648, 1433);
             vendyBox.TabIndex = 42;
             vendyBox.TabStop = false;
             vendyBox.Text = "Vendy";
             // 
             // label15
             // 
-            label15.Location = new Point(6, 1109);
+            label15.Location = new Point(6, 1068);
             label15.Name = "label15";
             label15.Size = new Size(126, 45);
             label15.TabIndex = 70;
@@ -618,7 +634,7 @@
             // 
             // textPassword
             // 
-            textPassword.Location = new Point(138, 1106);
+            textPassword.Location = new Point(138, 1065);
             textPassword.Multiline = true;
             textPassword.Name = "textPassword";
             textPassword.PasswordChar = '*';
@@ -628,7 +644,7 @@
             // 
             // label14
             // 
-            label14.Location = new Point(6, 1048);
+            label14.Location = new Point(6, 1007);
             label14.Name = "label14";
             label14.Size = new Size(126, 45);
             label14.TabIndex = 68;
@@ -636,7 +652,7 @@
             // 
             // textAddress
             // 
-            textAddress.Location = new Point(138, 1045);
+            textAddress.Location = new Point(138, 1004);
             textAddress.Multiline = true;
             textAddress.Name = "textAddress";
             textAddress.PlaceholderText = "Enter your address here...";
@@ -645,7 +661,7 @@
             // 
             // label13
             // 
-            label13.Location = new Point(6, 990);
+            label13.Location = new Point(6, 949);
             label13.Name = "label13";
             label13.Size = new Size(109, 45);
             label13.TabIndex = 66;
@@ -653,7 +669,7 @@
             // 
             // textMobile
             // 
-            textMobile.Location = new Point(138, 987);
+            textMobile.Location = new Point(138, 946);
             textMobile.Multiline = true;
             textMobile.Name = "textMobile";
             textMobile.PlaceholderText = "Enter your mobile number here...";
@@ -662,7 +678,7 @@
             // 
             // textName
             // 
-            textName.Location = new Point(138, 870);
+            textName.Location = new Point(138, 829);
             textName.Multiline = true;
             textName.Name = "textName";
             textName.PlaceholderText = "Enter your name here...";
@@ -671,7 +687,7 @@
             // 
             // label12
             // 
-            label12.Location = new Point(9, 870);
+            label12.Location = new Point(9, 829);
             label12.Name = "label12";
             label12.Size = new Size(118, 45);
             label12.TabIndex = 63;
@@ -679,9 +695,9 @@
             // 
             // submitDetailsDisplay
             // 
-            submitDetailsDisplay.Location = new Point(9, 1192);
+            submitDetailsDisplay.Location = new Point(9, 1131);
             submitDetailsDisplay.Name = "submitDetailsDisplay";
-            submitDetailsDisplay.Size = new Size(384, 162);
+            submitDetailsDisplay.Size = new Size(288, 162);
             submitDetailsDisplay.TabIndex = 62;
             submitDetailsDisplay.Text = "label12";
             submitDetailsDisplay.Visible = false;
@@ -691,7 +707,7 @@
             submitPersonalDetails.BackColor = Color.SlateBlue;
             submitPersonalDetails.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             submitPersonalDetails.ForeColor = Color.Yellow;
-            submitPersonalDetails.Location = new Point(435, 1163);
+            submitPersonalDetails.Location = new Point(435, 1127);
             submitPersonalDetails.Name = "submitPersonalDetails";
             submitPersonalDetails.Size = new Size(122, 55);
             submitPersonalDetails.TabIndex = 61;
@@ -704,7 +720,7 @@
             winnerLabel.Font = new Font("Stencil", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             winnerLabel.ForeColor = Color.Olive;
             winnerLabel.ImageAlign = ContentAlignment.TopCenter;
-            winnerLabel.Location = new Point(13, 814);
+            winnerLabel.Location = new Point(17, 776);
             winnerLabel.Name = "winnerLabel";
             winnerLabel.Size = new Size(521, 43);
             winnerLabel.TabIndex = 60;
@@ -713,7 +729,7 @@
             // 
             // label11
             // 
-            label11.Location = new Point(9, 931);
+            label11.Location = new Point(9, 890);
             label11.Name = "label11";
             label11.Size = new Size(106, 45);
             label11.TabIndex = 59;
@@ -721,7 +737,7 @@
             // 
             // textEmail
             // 
-            textEmail.Location = new Point(138, 928);
+            textEmail.Location = new Point(138, 887);
             textEmail.Multiline = true;
             textEmail.Name = "textEmail";
             textEmail.PlaceholderText = "Enter your email here...";
@@ -733,7 +749,7 @@
             collectBoobyPrize.BackColor = Color.Crimson;
             collectBoobyPrize.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             collectBoobyPrize.ForeColor = Color.Yellow;
-            collectBoobyPrize.Location = new Point(199, 576);
+            collectBoobyPrize.Location = new Point(199, 554);
             collectBoobyPrize.Name = "collectBoobyPrize";
             collectBoobyPrize.Size = new Size(157, 38);
             collectBoobyPrize.TabIndex = 57;
@@ -746,7 +762,7 @@
             collectPrize.BackColor = Color.SlateBlue;
             collectPrize.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             collectPrize.ForeColor = Color.Yellow;
-            collectPrize.Location = new Point(199, 371);
+            collectPrize.Location = new Point(199, 360);
             collectPrize.Name = "collectPrize";
             collectPrize.Size = new Size(157, 38);
             collectPrize.TabIndex = 56;
@@ -757,7 +773,7 @@
             // pictureBox11
             // 
             pictureBox11.Image = Properties.Resources._360_F_1699448928_KiG1fyIYF7P76nJd9dmbEhRScKsBUc1C;
-            pictureBox11.Location = new Point(390, 635);
+            pictureBox11.Location = new Point(390, 613);
             pictureBox11.Name = "pictureBox11";
             pictureBox11.Size = new Size(144, 119);
             pictureBox11.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -767,7 +783,7 @@
             // pictureBox10
             // 
             pictureBox10.Image = Properties.Resources._360_F_1699448928_KiG1fyIYF7P76nJd9dmbEhRScKsBUc1C;
-            pictureBox10.Location = new Point(205, 631);
+            pictureBox10.Location = new Point(205, 609);
             pictureBox10.Name = "pictureBox10";
             pictureBox10.Size = new Size(144, 119);
             pictureBox10.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -777,7 +793,7 @@
             // pictureBox9
             // 
             pictureBox9.Image = Properties.Resources._360_F_1699448928_KiG1fyIYF7P76nJd9dmbEhRScKsBUc1C;
-            pictureBox9.Location = new Point(28, 631);
+            pictureBox9.Location = new Point(28, 609);
             pictureBox9.Name = "pictureBox9";
             pictureBox9.Size = new Size(144, 119);
             pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -787,7 +803,7 @@
             // pictureBox8
             // 
             pictureBox8.Image = Properties.Resources.IMG_7975;
-            pictureBox8.Location = new Point(410, 430);
+            pictureBox8.Location = new Point(410, 411);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(96, 89);
             pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -797,7 +813,7 @@
             // pictureBox7
             // 
             pictureBox7.Image = Properties.Resources.IMG_7975;
-            pictureBox7.Location = new Point(234, 430);
+            pictureBox7.Location = new Point(234, 411);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(96, 89);
             pictureBox7.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -807,7 +823,7 @@
             // pictureBox6
             // 
             pictureBox6.Image = Properties.Resources.IMG_7975;
-            pictureBox6.Location = new Point(51, 430);
+            pictureBox6.Location = new Point(51, 411);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(96, 89);
             pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -819,7 +835,7 @@
             boobyPrize3.AutoSize = true;
             boobyPrize3.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boobyPrize3.ForeColor = Color.Crimson;
-            boobyPrize3.Location = new Point(371, 756);
+            boobyPrize3.Location = new Point(371, 734);
             boobyPrize3.Name = "boobyPrize3";
             boobyPrize3.Size = new Size(163, 28);
             boobyPrize3.TabIndex = 49;
@@ -832,7 +848,7 @@
             boobyPrize2.AutoSize = true;
             boobyPrize2.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boobyPrize2.ForeColor = Color.Crimson;
-            boobyPrize2.Location = new Point(195, 756);
+            boobyPrize2.Location = new Point(195, 734);
             boobyPrize2.Name = "boobyPrize2";
             boobyPrize2.Size = new Size(163, 28);
             boobyPrize2.TabIndex = 48;
@@ -845,7 +861,7 @@
             boobyPrize1.AutoSize = true;
             boobyPrize1.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boobyPrize1.ForeColor = Color.Crimson;
-            boobyPrize1.Location = new Point(9, 756);
+            boobyPrize1.Location = new Point(9, 734);
             boobyPrize1.Name = "boobyPrize1";
             boobyPrize1.Size = new Size(163, 28);
             boobyPrize1.TabIndex = 47;
@@ -858,7 +874,7 @@
             exitGame.BackColor = Color.SlateBlue;
             exitGame.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             exitGame.ForeColor = Color.Yellow;
-            exitGame.Location = new Point(435, 1284);
+            exitGame.Location = new Point(435, 1248);
             exitGame.Name = "exitGame";
             exitGame.Size = new Size(122, 54);
             exitGame.TabIndex = 46;
@@ -871,7 +887,7 @@
             playAgain.BackColor = Color.SlateBlue;
             playAgain.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             playAgain.ForeColor = Color.Yellow;
-            playAgain.Location = new Point(435, 1224);
+            playAgain.Location = new Point(435, 1188);
             playAgain.Name = "playAgain";
             playAgain.Size = new Size(125, 54);
             playAgain.TabIndex = 45;
@@ -884,7 +900,7 @@
             mysteryPrize3.AutoSize = true;
             mysteryPrize3.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             mysteryPrize3.ForeColor = Color.Purple;
-            mysteryPrize3.Location = new Point(375, 528);
+            mysteryPrize3.Location = new Point(375, 509);
             mysteryPrize3.Name = "mysteryPrize3";
             mysteryPrize3.Size = new Size(163, 28);
             mysteryPrize3.TabIndex = 44;
@@ -897,7 +913,7 @@
             mysteryPrize2.AutoSize = true;
             mysteryPrize2.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             mysteryPrize2.ForeColor = Color.Purple;
-            mysteryPrize2.Location = new Point(199, 528);
+            mysteryPrize2.Location = new Point(199, 509);
             mysteryPrize2.Name = "mysteryPrize2";
             mysteryPrize2.Size = new Size(163, 28);
             mysteryPrize2.TabIndex = 43;
@@ -910,7 +926,7 @@
             mysteryPrize1.AutoSize = true;
             mysteryPrize1.Font = new Font("Elephant", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             mysteryPrize1.ForeColor = Color.Purple;
-            mysteryPrize1.Location = new Point(13, 528);
+            mysteryPrize1.Location = new Point(13, 509);
             mysteryPrize1.Name = "mysteryPrize1";
             mysteryPrize1.Size = new Size(163, 28);
             mysteryPrize1.TabIndex = 42;
@@ -923,7 +939,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Thistle;
-            ClientSize = new Size(1550, 1472);
+            ClientSize = new Size(1608, 1466);
             Controls.Add(vendyBox);
             Controls.Add(orderZone);
             Controls.Add(paymentZone);
@@ -948,6 +964,7 @@
             paymentZone.ResumeLayout(false);
             orderZone.ResumeLayout(false);
             orderZone.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)rubbishBin).EndInit();
             vendyBox.ResumeLayout(false);
             vendyBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox11).EndInit();
@@ -1031,5 +1048,6 @@
         private TextBox textAddress;
         private Label label15;
         private TextBox textPassword;
+        private PictureBox rubbishBin;
     }
 }

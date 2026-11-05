@@ -3,7 +3,7 @@
 //1.[COMPLETE] Create lots of click buttons for each product and include price  [COMPLETE]
 //2. Add a remove button to get rid of items from list box and then update total price in order summary 
 //3. [COMPLETE] build ability to cancel all items and order. place this in a cancel button in order zone area [COMPLETE]
-// Add cancellation to the first listbox - either drag drop or individual remove for each item
+// [COMPLETE] Add cancellation to the first listbox - either drag drop or individual remove for each item [COMPLETE]
 //4. [COMPLETE] add functionality to add each item to list box once selected and display it in list box [COMPLETE]
 //5. A paid receipt or summary shows the list of products and saves to a text file after items are paid for
 //6. [COMPLETE] Set the checkout button to freeze everything but payment zone. Use groups/read only to stop adding more items [COMPLETE]
@@ -12,12 +12,12 @@
 //9.[COMPLETE] Add a drag drop function to allow money to be inserted into the vending machine [COMPLETE]
 //10.Work out how to disable coins and drag drop in checkout area but then activate coins and slot once checkout button is clicked.
 //11. [COMPLETE] Add a total label and running total of all products so far [COMPLETE]
-//12. Add a label or messagebox which displays change from payment made and then resets the machine to start again.
-//13. Add drag drop function from list box to drag items from first list box into rubbish bin
-//14. Add a class, dictionary and list for the extra Vendy feature. Make a game or feature where user can win a prize or get a random product. Incorporate radio buttons and other controls I have not used so far
+//12. [COMPLETE] Add a label or messagebox which displays change from payment made and then resets the machine to start again. [COMPLETE]
+//13.[COMPLETE] Add drag drop function from list box to drag items from first list box into rubbish bin [COMPLETE]
+//14. [COMPLETE] Add a class, dictionary and list for the extra Vendy feature. Make a game or feature where user can win a prize or get a random product. Incorporate radio buttons and other controls I have not used so far [COMPLETE]
 //15. Add a useful label displaying most recent action of the user
 // this could be for answering questions or making choices. Could add a hacking feature of the vending machine, such as a number code guess for assembly and opcode manipulation
-// add two new items to the vending machine products
+
 
 //EXTRA. extra create a chat option - sentience feature (if user just wants a chat). also can build in logic to choose products
 //this could be a rand operator - nested inf statements on a loop. a random product selector implying the machine is sentient
@@ -29,8 +29,8 @@
 // 3. add the prizes and show this on the design [COMPLETE]
 // 4. finish  extra functions on a win or lose and play again. 
 //5. add radio buttons or checkboxes to the different parts of the vendy prizes so user can choose a mystery prize from good or bad pile pending on their score [COMPLETE]
-// 6. work out furtehr user input for details such as email address or phone number. Write code to collect this.
-// 7. add a function to save the user input to a text file for vendy to collect
+// 6. work out furtehr user input for details such as email address or phone number. Write code to collect this. [COMPLETE]
+// 7. add a function to save the user input to a text file for vendy to collect [COMPLETE]
 
 using System.Collections.Specialized;
 using System.Numerics;
@@ -42,11 +42,11 @@ namespace Vending_Machine
     public partial class Form1 : Form
     {
 
-        Checkout checkout = new Checkout(); // I will use this to call separate functions built in the checkout class to calculate the amount due, money paid and change
+        Checkout checkout = new Checkout(); // this calls separate functions built in the checkout class to calculate the amount due, money paid and change
 
-        Sentientvendy vendy = new Sentientvendy(); //vendy extra feature
+        Sentientvendy vendy = new Sentientvendy(); //vendy class extra feature
 
-        Dictionary<string, Product> vendingProducts = new Dictionary<string, Product>();
+        Dictionary<string, Product> vendingProducts = new Dictionary<string, Product>(); //Dictionary for product names
 
         // coins for vending machine set as const so value can not be changed
         const double onePoundCoin = 1.00;
@@ -68,12 +68,13 @@ namespace Vending_Machine
         {
             InitializeComponent();
 
-            paymentBox.AllowDrop = true;
+            paymentBox.AllowDrop = true; //to allow payment drag drop
+            rubbishBin.AllowDrop = true; //to allow removal of items from list into bin
             paymentZone.Enabled = false;
             cancelComplete.Enabled = false;
             vendyBox.Enabled = false;
 
-            addProducts(); //function to add products to dictionary for vending machine
+            addProducts(); //add products to dictionary for vending machine
 
         }
 
@@ -89,22 +90,14 @@ namespace Vending_Machine
 
         double totalPrice = 0.00; // this holds the total price which will be caluclated for all items chosen. this is displayed at end of order
 
-        // amount of stock available in vending machine
-        const int butterfingerQuantity = 20;
-        const int marsQuantity = 20;
-        const int tonysQuantity = 20;
-        const int cokeQuantity = 20;
-
-
-        // function to add quantity of items, group them and calculate price for order summary. I Call this function in the confirm items (finish button) click event
-        //experiment here with a list of items from tutorial and can use a dictionary to store. 
-        private void calculateOrderSummary()
+         
+        private void calculateOrderSummary() //calculates all orders placed into order sumamry list box
         {
             orderSummary.Items.Clear();
 
             // getters from product class
 
-            double butterfingerPrice = vendingProducts["Butterfinger"].getPrice();  //uses dictionary example 1
+            double butterfingerPrice = vendingProducts["Butterfinger"].getPrice();  //uses dictionary example 1 
             double marsPrice = vendingProducts["Mars"].getPrice();
             double tonysPrice = vendingProducts["Tony's"].getPrice();
             double cokePrice = vendingProducts["Coke"].getPrice();
@@ -116,7 +109,7 @@ namespace Vending_Machine
             int tonysChosen = 0;
             int cokeChosen = 0;
 
-            foreach (string product in listBox1.Items)
+            foreach (string product in listBox1.Items) //foreach loop counts amount of each item in listbox1
             {
                 if (product.Contains("Butterfinger "))
                 {
@@ -196,11 +189,8 @@ namespace Vending_Machine
 
             double marsPrice = vendingProducts["Mars"].getPrice();
 
-            //variable for amount inside vending machine
             listBox1.Items.Add("Mars " + marsPrice.ToString("£0.00"));
             totalPrice += marsPrice;
-
-            // group more than one of the same item together and then display this in the list box
         }
 
         private void Tonys_Click(object sender, EventArgs e)
@@ -226,12 +216,11 @@ namespace Vending_Machine
 
         private void checkoutSave_Click(object sender, EventArgs e)
         {
-            //opens the box below for the user to pay
             //function in here to disable the buttons for ordering products and open payment box for inserting the coins
 
             disableOrderZone();
 
-            paymentZone.Visible = true;
+            paymentZone.Visible = true; // payment zone made visible if visibility is ever set to false in properties
             paymentZone.Enabled = true;
             paymentBox.Visible = true;
             paymentBox.Enabled = true;
@@ -246,13 +235,35 @@ namespace Vending_Machine
 
             MessageBox.Show("WARNING! So you definitely want to cancel?\n\n This will remove all items\n\n Press Cancel All to remove all items");
 
-            // enable the Cancel All button so the user can click this button
+            // this enables the Cancel All button so the user can click this button
 
             cancelComplete.Enabled = true;
-
         }
 
-        private void confirmItems_Click(object sender, EventArgs e)
+        //These are dragdrop events to remove an item from listbox1 and drag to rubbish bin to remove it from first list box
+
+        private void listBox1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (listBox1.Items.Count > 0)
+            {
+                listBox1.DoDragDrop(listBox1.SelectedItems.ToString(), DragDropEffects.Move);
+
+                listBox1.Items.Remove(listBox1.SelectedItem); //removes the selected item from the listbox1
+            }
+        }
+
+        private void rubbishBin_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void rubbishBin_DragDrop(object sender, DragEventArgs e)
+        {
+            listBox1.SelectedItems.Remove(listBox1.SelectedItems);
+        }
+
+
+        private void confirmItems_Click(object sender, EventArgs e) // this is the finish button on vending machine to confirm order
         {
 
             calculateOrderSummary(); //calling this to calculate order summary and display in that list box
@@ -356,8 +367,6 @@ namespace Vending_Machine
 
         // drag drop to remove items from list box 1 into a bin. This feature will allow removal of each individual item
 
-        // checkout.moneyPaid(totalCoinsInserted, totalPrice); 
-
         private void Form1_Load(object sender, EventArgs e)
         {
             paymentBox.AllowDrop = true;
@@ -378,6 +387,34 @@ namespace Vending_Machine
                 speakVendy.Enabled = false;
                 confirmItems.Enabled = false;
             }
+        }
+
+        private void restart() // this restarts the vending machine for a new user
+        {
+            totalPrice = 0.00;
+
+            checkout.resetCheckout();
+
+            checkoutSave.Enabled = true;
+            butterfinger.Enabled = true;
+            Mars.Enabled = true;
+            Tonys.Enabled = true;
+            Coke.Enabled = true;
+            speakVendy.Enabled = true;
+            confirmItems.Enabled = true;
+            paymentZone.Enabled = false;
+
+            //clear all of order zone and payment zone to reset vending machine for a new user
+
+            listBox1.Items.Clear();
+            orderSummary.Items.Clear();
+
+            finalAmount.Text = "Total Amount: " + totalPrice.ToString("£0.00") + "\nMoney paid: " + moneyPaid.ToString("£0.00") + "\nAmount Remaining: " + totalPrice.ToString("£0.00") + "\nChange Due: " + changeDue.ToString("£0.00");
+            label10.Text = "Total Price: " + totalPrice.ToString("£0.00");
+
+            label10.Text = "Total Price: £0.00";
+            change.Text = "Change: £0.00";
+
         }
 
         private void orderZone_Enter(object sender, EventArgs e)
@@ -410,6 +447,7 @@ namespace Vending_Machine
                 listBox1.Items.Clear();
                 orderSummary.Items.Clear();
                 MessageBox.Show("All items removed from order summary. Come back soon!");
+                restart(); // this resets the vending machine for a new user
             }
 
         }
@@ -421,29 +459,48 @@ namespace Vending_Machine
             change.Text = "Change: " + changeDue.ToString("£0.00");
         }
 
+        private void noStealing()
+        {
+            // this is a function to stop users from stealing items from the vending machine. It will check if the user has paid enough and if not it will display a message and reset the machine
+            if (checkout.getAmountDue() > 0)
+            {
+                MessageBox.Show("You have not paid enough for your items. \n\n Thief!!! \n\n" +
+                    "Vendy has caught you lifting items\n\n Vendy knows your face, your gait and can give a good description" +
+                    "\n Vendy's robot fleet is on its way");
+
+                listBox1.Items.Clear();
+                Application.Exit(); // this exits the vending machine
+
+            }
+             else if (checkout.getMoneyPaid() == totalPrice)
+            {
+                MessageBox.Show("Thank you for your purchase.\n\nVendy is happy you have paid the correct amount");
+            }
+
+            else if (checkout.getMoneyPaid() > totalPrice)
+            {
+                MessageBox.Show("Thank you for your purchase. \n\nVendy is happy you have paid the correct amount");
+            }
+            
+        }
+
         private void collectPurchase_Click(object sender, EventArgs e)
         {
-            // extra function for saving order summary to text file to be inserted here
+            // this writes the purchases made to a text file in project folder textFiles - Save to text File
 
-            // this resets the vending machine after the use has collected their items and change
 
-            listBox1.Items.Clear();
-            orderSummary.Items.Clear();
 
-            MessageBox.Show("Thank you for your purchase. Please collect your items and change. \n\n Vendy is available if you want to play a game or have a chat. \n\n Just press 'speak to vendy' : ) \n\n you won't regret it!");
+            noStealing(); //checks the user has paid for their items and if not closes the vending machine
+
+            MessageBox.Show("Thank you for your purchase. Please collect your items and change. \n\n" +
+                "Before you go you need to speak to Vendy \n\n Just press 'speak to vendy' : ) \n\n you won't regret it!");
+           
 
             vendyBox.Enabled = true; // this enables the speak to vendy button so user can click it again
             speakVendy.Enabled = true; // this enables the speak to vendy button so user can click it again
+
+          
             disableVendyPrizeZone(); // this disables the prize zone so user can only click it once
-
-            //reset finalamount label
-            change.Text = "Change: £0.00";
-            finalAmount.Text = "Total Amount: " + totalPrice.ToString("£0.00") + "\nMoney paid: " + moneyPaid.ToString("£0.00") + "\nAmount Remaining: " + totalPrice.ToString("£0.00") + "\nChange Due: " + changeDue.ToString("£0.00");
-            label10.Text = "Total Price: " + totalPrice.ToString("£0.00");
-            totalPrice = 0.00;
-
-
-
         }
 
         //extra feature of sentient vending machine called Vendy. uses extra functionality researched
@@ -465,7 +522,7 @@ namespace Vending_Machine
 
                 // call vendyGame questions method
                 vendy.VendyGameQuestions();
-
+                restart();
                 // work out score
 
                 //display the player score and give instructions on claiming prizes
@@ -488,20 +545,33 @@ namespace Vending_Machine
                 }
                 else
                 {
-
                     MessageBox.Show("Vendy strongly suggests you play again to win a prize. \n Press Speak to Vendy to have another go");
 
                     playAgain.Enabled = true; // this allows loser to play again to win a prize
 
                 }
 
-
-
             }
 
             else
             {
-                MessageBox.Show("That's okay, maybe next time.");
+                MessageBox.Show("hmmm, are you sure? Vendy thinks you should play");
+
+                MessageBoxButtons dontLeave = MessageBoxButtons.YesNo;
+
+                DialogResult leave = MessageBox.Show("Are you sure you want to leave? \n\n Vendy thinks you should play", "Vendy", dontLeave);
+
+                if (leave == DialogResult.Yes)
+                {
+                    MessageBox.Show("Vendy is disappointed you do not want to play a game. \n Be aware vendy has a memory and feelings" +
+                        "\n\n Vendy also has eyes and knows who you are.");
+                    restart();
+                }
+                else
+                {
+                    MessageBox.Show("Vendy is happy you want to play a game. \n\n Press Speak to Vendy to start the game");
+                }
+
             }
 
         }
@@ -533,7 +603,7 @@ namespace Vending_Machine
 
             if (mysteryPrize1.Checked)
             {
-                MessageBox.Show("You have selected mystery prize 1. \n\n This is a night at the Ritz Hotel for 2! \n\n Vendy will send the booking to your email");
+                MessageBox.Show("You have selected mystery prize 1. \n\n This is a night at the Ritz Hotel for 2! Well done! \n\n Vendy will send the booking to your email");
 
                 mysteryPrize2.Enabled = false;
                 mysteryPrize3.Enabled = false;
@@ -545,19 +615,18 @@ namespace Vending_Machine
         {
             if (mysteryPrize2.Checked)
             {
-                MessageBox.Show("You have selected mystery prize 2.\n\n Tickets for Defcon in Las vegas!! Well done \n\n Vendy will send these to your email");
+                MessageBox.Show("You have selected mystery prize 2.\n\n Tickets for Defcon in Las Vegas!! Well done \n\n Vendy will send these to your email \n\n Viva Las vegas!\n\n Vendy is singing and is so happy for you");
 
                 mysteryPrize1.Enabled = false;
                 mysteryPrize3.Enabled = false;
             }
 
         }
-
         private void mysteryPrize3_CheckedChanged(object sender, EventArgs e)
         {
             if (mysteryPrize3.Checked)
             {
-                MessageBox.Show("You have selected mystery prize 3.\n\n An autonomous mini cooper!\n\n Vendy will send this to your address");
+                MessageBox.Show("You have selected mystery prize 3.\n\n Wow! An autonomous mini cooper!\n\n Vendy will send this to your address");
                 mysteryPrize1.Enabled = false;
                 mysteryPrize2.Enabled = false;
             }
@@ -612,18 +681,30 @@ namespace Vending_Machine
             {
                 MessageBox.Show("Vendy is happy to play again. \n\n Press Speak to Vendy to have another go");
 
-             
-            }
 
+            }
+            textName.Clear();
+            textEmail.Clear();
+            textMobile.Clear();
+            textAddress.Clear();
+            textPassword.Clear();
         }
 
         private void exitGame_Click(object sender, EventArgs e)
         {
 
             //this is exit game button, only available to those who have won a prize and submitted details
+            //clear all fields and reset game for new user
 
-
-
+           textName.Clear();
+           textEmail.Clear();
+           textMobile.Clear();
+           textAddress.Clear();
+           textPassword.Clear();
+    
+                MessageBox.Show("Thankyou for playing Vendy. \n\n Vendy knows where you live. \n\n Make sure you come back soon!");
+    
+                Application.Exit(); // this closes the application
 
         }
 
@@ -671,21 +752,24 @@ namespace Vending_Machine
 
             //write the details to a text file and save it to project folder
 
-            StreamWriter writer = new StreamWriter("C:\\Users\\Luke\\source\\repos\\Vending_Machine\\Vending_Machine\\Resources\\TextFiles\\userDetails.txt"); //this is the path to textfiles folder to save the new text file
+            bool fileAppend = true; // this is to append the file to not overwrite previous entries
 
-            string[] userEntry = { name, email, mobile, address, password };
+            StreamWriter writer = new StreamWriter("C:\\Users\\Luke\\source\\repos\\Vending_Machine\\Vending_Machine\\Resources\\TextFiles\\userDetails.txt", true); //this is the path to textfiles folder to save the new text file
 
-            foreach (string entry in userEntry )
+           
+            string[] userEntry = { "\nName: " + name, "Email: " + email, "Mobile: " + mobile, "Address: " + address, "Password: " + password ,"\n" }; // array of labels for writing to text file
+
+
+            foreach (string entry in userEntry)
             {
                 writer.WriteLine(entry);
             }
+
             writer.Close();
 
             MessageBox.Show("Details submitted successfully. Vendy will make sure your prize is sent to you ; ) \n\n Thankyou for playing vendy");
 
             exitGame.Enabled = true; // this allows user to exit after submitting details to claim their prize
-
-
         }
     }
 
@@ -768,6 +852,14 @@ namespace Vending_Machine
             return changeDue;
         }
 
+        public void resetCheckout()
+        {
+            totalCoinsInserted = 0.00;
+            amountRemaining = 0.00;
+            totalPrice = 0.00;
+            changeDue = 0.00;
+
+        }
         
         public void deductStock()
         {
@@ -805,7 +897,7 @@ namespace Vending_Machine
             questions.Add("Does Isaac Asimov have laws?", true);
             questions.Add("Is Everett's many worlds interpretation a theory of parallel universes?\n\n", true);
             questions.Add("Is Werner Heisenberg certain about the position and momentum of a particle?\n\n", false);
-            questions.Add("Is the Schrödinger equation a fundamental equation of quantum mechanics?\n\n", true);
+            questions.Add("Is the Schrodinger equation a fundamental equation of quantum mechanics?\n\n", true);
             questions.Add("Is the Copenhagen interpretation a theory of quantum mechanics?\n\n", true);
             questions.Add("If a cat is in a box, is it both alive and dead at the same time?\n\n", true);
             questions.Add("Can neural networks offer sentience to a vending machine?\n\n", true);
@@ -839,16 +931,12 @@ namespace Vending_Machine
       
         }
 
+        //These are placeholders for extra chat functions for Vendy feature
         public static void VendyHappy() //vendy gets creepy and starts insist the player gives their contact details so they can play from home
         {
             // this function is the best prize and allows user select a list of prizes
 
             MessageBox.Show("Bravo! Clap clap, you have won a prize from Vendy! \n\n Select a prize from the list below and Vendy will send it to your address");
-
-
-
-            
-
 
         }
 
@@ -863,12 +951,7 @@ namespace Vending_Machine
 
             // play again - button pressed to play again and reset the game or person tries to leave the game
 
-
-
-
-
         }
-
 
     }
 

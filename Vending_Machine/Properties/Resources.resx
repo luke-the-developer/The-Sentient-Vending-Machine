@@ -124,17 +124,14 @@
   <data name="TonysChoclolate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TonysChoclolate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="2P" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2P.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="2Pound" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2Pound.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="20P" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\20P.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="soirals-1300x700" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\soirals-1300x700.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="2P" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2P.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="vendy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vendy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,8 +145,8 @@
   <data name="IMG_7975" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IMG_7975.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Mars_bar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mars_bar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="5P" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\5P.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="50P" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\50P.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,13 +154,19 @@
   <data name="1P" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1P.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="soirals-1300x700" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\soirals-1300x700.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="coinSlot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\coinSlot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="5P" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\5P.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="360_F_1699448928_KiG1fyIYF7P76nJd9dmbEhRScKsBUc1C" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\360_F_1699448928_KiG1fyIYF7P76nJd9dmbEhRScKsBUc1C.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mars_bar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mars_bar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="images (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
