@@ -207,7 +207,7 @@ namespace Vending_Machine
         {
             double tonysPrice = vendingProducts["Tony's"].getPrice();
 
-            listBox1.Items.Add("Tony's " + tonysPrice.ToString("£0.00"));      
+            listBox1.Items.Add("Tony's " + tonysPrice.ToString("£0.00"));
             totalPrice += tonysPrice;
         }
 
@@ -475,6 +475,7 @@ namespace Vending_Machine
                 if (vendy.getQuestionScore() >= 7)
                 {
                     collectPrize.Enabled = true; // enables prize collect button
+                   
 
                 }
                 else if (vendy.getQuestionScore() >= 5 && vendy.getQuestionScore() < 7)
@@ -490,7 +491,7 @@ namespace Vending_Machine
 
                     MessageBox.Show("Vendy strongly suggests you play again to win a prize. \n Press Speak to Vendy to have another go");
 
-
+                    playAgain.Enabled = true; // this allows loser to play again to win a prize
 
                 }
 
@@ -515,6 +516,7 @@ namespace Vending_Machine
                 collectBoobyPrize.Enabled = false;
                 playAgain.Enabled = false;
                 exitGame.Enabled = false;
+                submitPersonalDetails.Enabled = false;
                 mysteryPrize1.Enabled = false;
                 mysteryPrize2.Enabled = false;
                 mysteryPrize3.Enabled = false;
@@ -594,20 +596,34 @@ namespace Vending_Machine
         {
             // this enables the user to select a prize 
 
-            MessageBox.Show("Choose one prize from the list and Vnedy will make sure it arrives");
-            mysteryPrize1.Enabled = true;
+            MessageBox.Show("Choose one prize from the list and Vendy will make sure it arrives");
+            mysteryPrize1.Enabled = true; //enabling all prize options
             mysteryPrize2.Enabled = true;
             mysteryPrize3.Enabled = true;
+            submitPersonalDetails.Enabled = true; // this activates the submit button so user can then submit their details
 
         }
 
         private void playAgain_Click(object sender, EventArgs e)
         {
+            //this offers a play again option to those who have lost and not submitted details for a prize
+
+            if (playAgain.Enabled == true)
+            {
+                MessageBox.Show("Vendy is happy to play again. \n\n Press Speak to Vendy to have another go");
+
+             
+            }
 
         }
 
         private void exitGame_Click(object sender, EventArgs e)
         {
+
+            //this is exit game button, only available to those who have won a prize and submitted details
+
+
+
 
         }
 
@@ -620,6 +636,55 @@ namespace Vending_Machine
             boobyPrize1.Enabled = true;
             boobyPrize2.Enabled = true;
             boobyPrize3.Enabled = true;
+
+        }
+
+        private void submitPersonalDetails_Click(object sender, EventArgs e) //this gets the user details then saves it to a text file in project folder textFiles
+        {
+            //read the input from user details submitted
+
+            string outputMessage = "";
+
+            string name = textName.Text;
+            string email = textEmail.Text;
+            string mobile = textMobile.Text;
+            string address = textAddress.Text;
+            string password = textPassword.Text;
+
+            //Process
+
+            if(!string.IsNullOrEmpty(name) &&
+                !string.IsNullOrEmpty(email) &&
+                !string.IsNullOrEmpty(mobile) &&
+                !string.IsNullOrEmpty(address) &&
+                !string.IsNullOrEmpty(password))
+            {
+                outputMessage = $"Information submitted\n\nName: {name}\nEmail: {email}\nMobile: {mobile}\nAddress: {address}\nPassword: ********\n";
+
+                submitDetailsDisplay.Text = outputMessage;
+                submitDetailsDisplay.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Provide your full details to claim your prize!");
+            }
+
+            //write the details to a text file and save it to project folder
+
+            StreamWriter writer = new StreamWriter("C:\\Users\\Luke\\source\\repos\\Vending_Machine\\Vending_Machine\\Resources\\TextFiles\\userDetails.txt"); //this is the path to textfiles folder to save the new text file
+
+            string[] userEntry = { name, email, mobile, address, password };
+
+            foreach (string entry in userEntry )
+            {
+                writer.WriteLine(entry);
+            }
+            writer.Close();
+
+            MessageBox.Show("Details submitted successfully. Vendy will make sure your prize is sent to you ; ) \n\n Thankyou for playing vendy");
+
+            exitGame.Enabled = true; // this allows user to exit after submitting details to claim their prize
+
 
         }
     }
@@ -722,6 +787,11 @@ namespace Vending_Machine
         public int getQuestionScore() //this is a getter so i can access question score from main form
         {
             return questionScore;
+        }
+
+        public double getTotalScore()
+        {
+            return totalScore;
         }
 
         public void VendyGameQuestions()

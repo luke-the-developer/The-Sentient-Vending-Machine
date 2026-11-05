@@ -70,6 +70,17 @@
             orderZone = new GroupBox();
             cancelComplete = new Button();
             vendyBox = new GroupBox();
+            label15 = new Label();
+            textPassword = new TextBox();
+            label14 = new Label();
+            textAddress = new TextBox();
+            label13 = new Label();
+            textMobile = new TextBox();
+            textName = new TextBox();
+            label12 = new Label();
+            submitDetailsDisplay = new Label();
+            submitPersonalDetails = new Button();
+            winnerLabel = new Label();
             label11 = new Label();
             textEmail = new TextBox();
             collectBoobyPrize = new Button();
@@ -88,15 +99,6 @@
             mysteryPrize3 = new CheckBox();
             mysteryPrize2 = new CheckBox();
             mysteryPrize1 = new CheckBox();
-            winnerLabel = new Label();
-            submitPersonalDetails = new Button();
-            submitDetailsDisplay = new Label();
-            label12 = new Label();
-            textName = new TextBox();
-            textBox1 = new TextBox();
-            label13 = new Label();
-            textBox2 = new TextBox();
-            label14 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -475,7 +477,7 @@
             // 
             // change
             // 
-            change.Location = new Point(29, 332);
+            change.Location = new Point(19, 295);
             change.Name = "change";
             change.Size = new Size(183, 93);
             change.TabIndex = 37;
@@ -515,9 +517,9 @@
             // 
             // collectPurchase
             // 
-            collectPurchase.Location = new Point(226, 332);
+            collectPurchase.Location = new Point(295, 290);
             collectPurchase.Name = "collectPurchase";
-            collectPurchase.Size = new Size(180, 73);
+            collectPurchase.Size = new Size(180, 48);
             collectPurchase.TabIndex = 39;
             collectPurchase.Text = "Collect All";
             collectPurchase.UseVisualStyleBackColor = true;
@@ -568,10 +570,12 @@
             // 
             // vendyBox
             // 
+            vendyBox.Controls.Add(label15);
+            vendyBox.Controls.Add(textPassword);
             vendyBox.Controls.Add(label14);
-            vendyBox.Controls.Add(textBox2);
+            vendyBox.Controls.Add(textAddress);
             vendyBox.Controls.Add(label13);
-            vendyBox.Controls.Add(textBox1);
+            vendyBox.Controls.Add(textMobile);
             vendyBox.Controls.Add(textName);
             vendyBox.Controls.Add(label12);
             vendyBox.Controls.Add(submitDetailsDisplay);
@@ -604,6 +608,109 @@
             vendyBox.TabStop = false;
             vendyBox.Text = "Vendy";
             // 
+            // label15
+            // 
+            label15.Location = new Point(6, 1109);
+            label15.Name = "label15";
+            label15.Size = new Size(126, 45);
+            label15.TabIndex = 70;
+            label15.Text = "Password:";
+            // 
+            // textPassword
+            // 
+            textPassword.Location = new Point(138, 1106);
+            textPassword.Multiline = true;
+            textPassword.Name = "textPassword";
+            textPassword.PasswordChar = '*';
+            textPassword.PlaceholderText = "Enter your password here...";
+            textPassword.Size = new Size(422, 48);
+            textPassword.TabIndex = 69;
+            // 
+            // label14
+            // 
+            label14.Location = new Point(6, 1048);
+            label14.Name = "label14";
+            label14.Size = new Size(126, 45);
+            label14.TabIndex = 68;
+            label14.Text = "Address:";
+            // 
+            // textAddress
+            // 
+            textAddress.Location = new Point(138, 1045);
+            textAddress.Multiline = true;
+            textAddress.Name = "textAddress";
+            textAddress.PlaceholderText = "Enter your address here...";
+            textAddress.Size = new Size(422, 48);
+            textAddress.TabIndex = 67;
+            // 
+            // label13
+            // 
+            label13.Location = new Point(6, 990);
+            label13.Name = "label13";
+            label13.Size = new Size(109, 45);
+            label13.TabIndex = 66;
+            label13.Text = "Mobile No:";
+            // 
+            // textMobile
+            // 
+            textMobile.Location = new Point(138, 987);
+            textMobile.Multiline = true;
+            textMobile.Name = "textMobile";
+            textMobile.PlaceholderText = "Enter your mobile number here...";
+            textMobile.Size = new Size(422, 48);
+            textMobile.TabIndex = 65;
+            // 
+            // textName
+            // 
+            textName.Location = new Point(138, 870);
+            textName.Multiline = true;
+            textName.Name = "textName";
+            textName.PlaceholderText = "Enter your name here...";
+            textName.Size = new Size(422, 48);
+            textName.TabIndex = 64;
+            // 
+            // label12
+            // 
+            label12.Location = new Point(9, 870);
+            label12.Name = "label12";
+            label12.Size = new Size(118, 45);
+            label12.TabIndex = 63;
+            label12.Text = "Name:";
+            // 
+            // submitDetailsDisplay
+            // 
+            submitDetailsDisplay.Location = new Point(9, 1192);
+            submitDetailsDisplay.Name = "submitDetailsDisplay";
+            submitDetailsDisplay.Size = new Size(384, 162);
+            submitDetailsDisplay.TabIndex = 62;
+            submitDetailsDisplay.Text = "label12";
+            submitDetailsDisplay.Visible = false;
+            // 
+            // submitPersonalDetails
+            // 
+            submitPersonalDetails.BackColor = Color.SlateBlue;
+            submitPersonalDetails.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            submitPersonalDetails.ForeColor = Color.Yellow;
+            submitPersonalDetails.Location = new Point(435, 1163);
+            submitPersonalDetails.Name = "submitPersonalDetails";
+            submitPersonalDetails.Size = new Size(122, 55);
+            submitPersonalDetails.TabIndex = 61;
+            submitPersonalDetails.Text = "Submit";
+            submitPersonalDetails.UseVisualStyleBackColor = false;
+            submitPersonalDetails.Click += submitPersonalDetails_Click;
+            // 
+            // winnerLabel
+            // 
+            winnerLabel.Font = new Font("Stencil", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            winnerLabel.ForeColor = Color.Olive;
+            winnerLabel.ImageAlign = ContentAlignment.TopCenter;
+            winnerLabel.Location = new Point(13, 814);
+            winnerLabel.Name = "winnerLabel";
+            winnerLabel.Size = new Size(521, 43);
+            winnerLabel.TabIndex = 60;
+            winnerLabel.Text = "Winners Enclosure Form";
+            winnerLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // label11
             // 
             label11.Location = new Point(9, 931);
@@ -624,6 +731,7 @@
             // collectBoobyPrize
             // 
             collectBoobyPrize.BackColor = Color.Crimson;
+            collectBoobyPrize.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             collectBoobyPrize.ForeColor = Color.Yellow;
             collectBoobyPrize.Location = new Point(199, 576);
             collectBoobyPrize.Name = "collectBoobyPrize";
@@ -750,7 +858,7 @@
             exitGame.BackColor = Color.SlateBlue;
             exitGame.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             exitGame.ForeColor = Color.Yellow;
-            exitGame.Location = new Point(438, 1362);
+            exitGame.Location = new Point(435, 1284);
             exitGame.Name = "exitGame";
             exitGame.Size = new Size(122, 54);
             exitGame.TabIndex = 46;
@@ -763,7 +871,7 @@
             playAgain.BackColor = Color.SlateBlue;
             playAgain.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             playAgain.ForeColor = Color.Yellow;
-            playAgain.Location = new Point(35, 1362);
+            playAgain.Location = new Point(435, 1224);
             playAgain.Name = "playAgain";
             playAgain.Size = new Size(125, 54);
             playAgain.TabIndex = 45;
@@ -810,96 +918,12 @@
             mysteryPrize1.UseVisualStyleBackColor = true;
             mysteryPrize1.CheckedChanged += mysteryPrize1_CheckedChanged;
             // 
-            // winnerLabel
-            // 
-            winnerLabel.Font = new Font("Stencil", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            winnerLabel.ForeColor = Color.Olive;
-            winnerLabel.ImageAlign = ContentAlignment.TopCenter;
-            winnerLabel.Location = new Point(13, 814);
-            winnerLabel.Name = "winnerLabel";
-            winnerLabel.Size = new Size(521, 43);
-            winnerLabel.TabIndex = 60;
-            winnerLabel.Text = "Winners Enclosure Form";
-            winnerLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // submitPersonalDetails
-            // 
-            submitPersonalDetails.BackColor = Color.SlateBlue;
-            submitPersonalDetails.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            submitPersonalDetails.ForeColor = Color.Yellow;
-            submitPersonalDetails.Location = new Point(410, 1116);
-            submitPersonalDetails.Name = "submitPersonalDetails";
-            submitPersonalDetails.Size = new Size(156, 55);
-            submitPersonalDetails.TabIndex = 61;
-            submitPersonalDetails.Text = "Submit";
-            submitPersonalDetails.UseVisualStyleBackColor = false;
-            // 
-            // submitDetailsDisplay
-            // 
-            submitDetailsDisplay.Location = new Point(6, 1116);
-            submitDetailsDisplay.Name = "submitDetailsDisplay";
-            submitDetailsDisplay.Size = new Size(384, 162);
-            submitDetailsDisplay.TabIndex = 62;
-            submitDetailsDisplay.Text = "label12";
-            submitDetailsDisplay.Visible = false;
-            // 
-            // label12
-            // 
-            label12.Location = new Point(9, 870);
-            label12.Name = "label12";
-            label12.Size = new Size(118, 45);
-            label12.TabIndex = 63;
-            label12.Text = "Name:";
-            // 
-            // textName
-            // 
-            textName.Location = new Point(138, 870);
-            textName.Multiline = true;
-            textName.Name = "textName";
-            textName.PlaceholderText = "Enter your name here...";
-            textName.Size = new Size(422, 48);
-            textName.TabIndex = 64;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(138, 987);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Enter your mobile number here...";
-            textBox1.Size = new Size(422, 48);
-            textBox1.TabIndex = 65;
-            // 
-            // label13
-            // 
-            label13.Location = new Point(6, 990);
-            label13.Name = "label13";
-            label13.Size = new Size(109, 45);
-            label13.TabIndex = 66;
-            label13.Text = "Mobile No:";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(138, 1045);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "Enter your address here...";
-            textBox2.Size = new Size(422, 48);
-            textBox2.TabIndex = 67;
-            // 
-            // label14
-            // 
-            label14.Location = new Point(6, 1048);
-            label14.Name = "label14";
-            label14.Size = new Size(126, 45);
-            label14.TabIndex = 68;
-            label14.Text = "Address:";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Thistle;
-            ClientSize = new Size(1550, 1590);
+            ClientSize = new Size(1550, 1472);
             Controls.Add(vendyBox);
             Controls.Add(orderZone);
             Controls.Add(paymentZone);
@@ -1001,9 +1025,11 @@
         private Label submitDetailsDisplay;
         private Label label12;
         private TextBox textName;
-        private TextBox textBox1;
+        private TextBox textMobile;
         private Label label13;
         private Label label14;
-        private TextBox textBox2;
+        private TextBox textAddress;
+        private Label label15;
+        private TextBox textPassword;
     }
 }
