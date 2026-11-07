@@ -1,0 +1,64 @@
+
+Purchase:  
+System.Windows.Forms.ListBox+ObjectCollection
+ Date purchased: 
+
+ Item ordered: 
+Your order: 
+Butterfinger x 2 - £3.00
+Mars x 1 - £1.40
+Tony's x 1 - £1.60
+
+
+
+
+Item ordered: 
+Your order: 
+Butterfinger x 2 - £3.00
+Mars x 1 - £1.40
+Coke x 1 - £1.20
+
+
+
+
+Item ordered: 
+Your order: 
+Mars x 3 - £4.20
+
+
+
+
+Items ordered: 
+Order date: 
+Mars x 2 - £2.80
+Tony's x 1 - £1.60
+
+
+
+
+Items ordered: 
+Order date: 07/11/2026 15:19:12
+Mars x 2 - £2.80
+Tony's x 1 - £1.60
+Coke x 1 - £1.20
+
+
+
+
+Items ordered: 
+Order date: 07/11/2026 17:36:28
+Mars x 3 - £4.20
+Tony's x 1 - £1.60
+
+
+
+
+Items ordered: 
+Order date: 07/11/2026 18:17:01
+Butterfinger x 2 - £3.00
+Mars x 2 - £2.80
+Tony's x 1 - £1.60
+Coke x 2 - £2.40
+
+
+

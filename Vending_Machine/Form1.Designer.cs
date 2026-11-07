@@ -66,6 +66,7 @@
             change = new Label();
             finalAmount = new Label();
             paymentZone = new GroupBox();
+            purchaseDisplay = new Label();
             collectPurchase = new Button();
             orderZone = new GroupBox();
             rubbishBin = new PictureBox();
@@ -480,7 +481,7 @@
             // 
             // change
             // 
-            change.Location = new Point(19, 295);
+            change.Location = new Point(734, 293);
             change.Name = "change";
             change.Size = new Size(183, 93);
             change.TabIndex = 37;
@@ -498,6 +499,7 @@
             // 
             // paymentZone
             // 
+            paymentZone.Controls.Add(purchaseDisplay);
             paymentZone.Controls.Add(collectPurchase);
             paymentZone.Controls.Add(fiftyP);
             paymentZone.Controls.Add(change);
@@ -510,17 +512,26 @@
             paymentZone.Controls.Add(tenP);
             paymentZone.Controls.Add(twoP);
             paymentZone.Controls.Add(fiveP);
-            paymentZone.Location = new Point(12, 1112);
+            paymentZone.Location = new Point(12, 941);
             paymentZone.Name = "paymentZone";
-            paymentZone.Size = new Size(930, 437);
+            paymentZone.Size = new Size(930, 513);
             paymentZone.TabIndex = 39;
             paymentZone.TabStop = false;
             paymentZone.Text = "Payment Zone";
             paymentZone.Enter += paymentZone_Enter;
             // 
+            // purchaseDisplay
+            // 
+            purchaseDisplay.Location = new Point(24, 293);
+            purchaseDisplay.Name = "purchaseDisplay";
+            purchaseDisplay.Size = new Size(347, 204);
+            purchaseDisplay.TabIndex = 71;
+            purchaseDisplay.Text = "Order Receipt";
+            purchaseDisplay.Click += purchaseDisplay_Click;
+            // 
             // collectPurchase
             // 
-            collectPurchase.Location = new Point(295, 290);
+            collectPurchase.Location = new Point(737, 449);
             collectPurchase.Name = "collectPurchase";
             collectPurchase.Size = new Size(180, 48);
             collectPurchase.TabIndex = 39;
@@ -556,7 +567,7 @@
             orderZone.Controls.Add(listBox1);
             orderZone.Location = new Point(12, 116);
             orderZone.Name = "orderZone";
-            orderZone.Size = new Size(930, 990);
+            orderZone.Size = new Size(930, 819);
             orderZone.TabIndex = 40;
             orderZone.TabStop = false;
             orderZone.Text = "Order Zone";
@@ -1049,5 +1060,6 @@
         private Label label15;
         private TextBox textPassword;
         private PictureBox rubbishBin;
+        private Label purchaseDisplay;
     }
 }
