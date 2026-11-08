@@ -101,6 +101,7 @@
             mysteryPrize3 = new CheckBox();
             mysteryPrize2 = new CheckBox();
             mysteryPrize1 = new CheckBox();
+            label16 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -945,12 +946,22 @@
             mysteryPrize1.UseVisualStyleBackColor = true;
             mysteryPrize1.CheckedChanged += mysteryPrize1_CheckedChanged;
             // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(1400, 9);
+            label16.Name = "label16";
+            label16.Size = new Size(196, 25);
+            label16.TabIndex = 43;
+            label16.Text = "30115872  Luke Jordan";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Thistle;
             ClientSize = new Size(1608, 1466);
+            Controls.Add(label16);
             Controls.Add(vendyBox);
             Controls.Add(orderZone);
             Controls.Add(paymentZone);
@@ -985,6 +996,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -1061,5 +1073,6 @@
         private TextBox textPassword;
         private PictureBox rubbishBin;
         private Label purchaseDisplay;
+        private Label label16;
     }
 }

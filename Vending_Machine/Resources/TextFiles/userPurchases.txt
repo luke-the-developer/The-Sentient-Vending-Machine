@@ -62,3 +62,59 @@ Coke x 2 - £2.40
 
 
 
+
+Items ordered: 
+Order date: 08/11/2026 15:26:07
+Butterfinger x 1 - £1.50
+Mars x 1 - £1.40
+Tony's x 2 - £3.20
+
+
+
+
+Items ordered: 
+Order date: 08/11/2026 15:27:45
+Butterfinger x 1 - £1.50
+Mars x 2 - £2.80
+
+
+
+
+Items ordered: 
+Order date: 08/11/2026 15:39:44
+Butterfinger x 1 - £1.50
+Mars x 1 - £1.40
+Tony's x 1 - £1.60
+
+
+
+
+Items ordered: 
+Order date: 08/11/2026 16:00:02
+Mars x 2 - £2.80
+
+
+
+
+Items ordered: 
+Order date: 08/11/2026 16:06:22
+Mars x 2 - £2.80
+
+
+
+
+Items ordered: 
+Order date: 08/11/2026 16:14:17
+Mars x 1 - £1.40
+Tony's x 1 - £1.60
+Coke x 1 - £1.20
+
+
+
+
+Items ordered: 
+Order date: 08/11/2026 16:19:13
+Butterfinger x 1 - £1.50
+
+
+

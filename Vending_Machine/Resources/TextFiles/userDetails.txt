@@ -157,3 +157,11 @@ Address: the moon
 Password: sneakybeaky
 
 
+
+Name: 
+Email: 
+Mobile: 
+Address: 
+Password: 
+
+
